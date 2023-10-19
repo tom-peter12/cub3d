@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:41:38 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/18 21:36:06 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/19 21:02:59 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdbool.h>
+# include "../get_next_line/get_next_line.h"
 
 typedef struct s_list t_list;
 typedef struct s_btree t_btree;
@@ -69,7 +70,7 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *src);
 char		*ft_substr(char const *src, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);

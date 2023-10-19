@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 17:16:53 by tpetros           #+#    #+#              #
-#    Updated: 2023/10/18 21:36:30 by tpetros          ###   ########.fr        #
+#    Updated: 2023/10/19 21:00:41 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,7 @@ SRC_FILES = ft_array/ft_rev_int_tab.c \
 			ft_to/ft_itoa.c \
 			ft_to/ft_tolower.c \
 			ft_to/ft_toupper.c \
+			get_next_line/get_next_line.c \
 
 CC = cc
 RM = rm -rf
