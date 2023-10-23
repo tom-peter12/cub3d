@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:08:46 by tpetros           #+#    #+#             */
-/*   Updated: 2023/09/30 21:15:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 00:23:37 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
+	while (str && str[i] != '\0')
 		i++;
-	}
 	return (i);
 }

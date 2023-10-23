@@ -6,22 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:30:57 by tpetros           #+#    #+#             */
-/*   Updated: 2022/05/31 18:31:00 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 00:19:58 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "../includes/libft.h"
 
 int	ft_check_valid(char *base)
 {
@@ -55,7 +44,7 @@ void	ft_putnbr_base(int nb, char *base)
 			write(1, &"-", 1);
 			ft_putnbr_base((nb * -1), base);
 		}
-		else if (nb > ft_strlen(base))
+		else if (nb > (int) ft_strlen(base))
 		{
 			ft_putnbr_base((nb / ft_strlen(base)), base);
 			ft_putnbr_base((nb % ft_strlen(base)), base);

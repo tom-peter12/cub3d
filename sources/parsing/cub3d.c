@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/19 21:49:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 00:15:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_validate_args(t_parse *parse, int argc, char **argv)
 
 int	ft_parse_cub(t_parse *parse)
 {
-	char	*tmp;
+	// char	*tmp;
 	
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	if (parse->map_fd == -1)
@@ -63,22 +63,23 @@ int	ft_parse_cub(t_parse *parse)
 	if (ft_is_dir(parse->map_file))
 		return (1);
 	parse->line = get_next_line(parse->map_fd);
+	printf("%s\n", parse->line);
 	if (!parse->line)
 		return (ft_putendl_fd("Error\nFile cannot be empty", 2), 1);
-	while (parse->line)
-	{
-		tmp = ft_substr(parse->line, 0, 1);
-		// if (ft_strcmp(tmp, "NO"))
-		// 	ft_parse_north();
-		// else if (ft_strcmp(tmp, "SO"))
-		// 	ft_parse_south();
-		// else if (ft_strcmp(tmp, "WE"))
-		// 	ft_parse_west();
-		// else if (ft_strcmp(tmp, "EA"))
-		// 	ft_parse_east();
-		parse->line = get_next_line(parse->map_fd);
-		free(tmp);
-	}
+	// while (parse->line)
+	// {
+	// 	tmp = ft_substr(parse->line, 0, 1);
+	// 	// if (ft_strcmp(tmp, "NO"))
+	// 	// 	ft_parse_north();
+	// 	// else if (ft_strcmp(tmp, "SO"))
+	// 	// 	ft_parse_south();
+	// 	// else if (ft_strcmp(tmp, "WE"))
+	// 	// 	ft_parse_west();
+	// 	// else if (ft_strcmp(tmp, "EA"))
+	// 	// 	ft_parse_east();
+	// 	parse->line = get_next_line(parse->map_fd);
+	// 	free(tmp);
+	// }
 	
 	return (0);
 }

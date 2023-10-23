@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:01:46 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/19 21:52:48 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 00:14:05 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_all_read(int fd, char *left_stat)
 	int		read_bytes;
 
 	read_bytes = 1;
-	buff_read = (char *)ft_calloc((sizeof(char) * (size_t)BUFFER_SIZE + 1), 1);
+	buff_read = (char *)ft_calloc((sizeof(char) * (size_t)BUFFER_SIZE + 2), 1);
 	if (!buff_read)
 		return (NULL);
 	while (!ft_strchr(buff_read, '\n') && read_bytes != 0)
@@ -103,25 +103,3 @@ char	*get_next_line(int fd)
 	extra_chars = ft_left_chars(extra_chars);
 	return (next_line);
 }
-
-
-// char *get_next_line(int fd)
-// {
-//     int i = 0;
-//     int rd = 0;
-//     char character;
-
-//     if (BUFFER_SIZE <= 0)
-//         return (NULL);
-//     char *buffer = malloc(100000);
-//     while ((rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1)) > 0)
-//     {
-//         buffer[i++] = character;
-//         if (character == '\n')
-//             break;
-//     }
-//     buffer[i] = '\0';
-//     if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
-//         return (free(buffer), NULL);
-//     return (buffer);
-// }

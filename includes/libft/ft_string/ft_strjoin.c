@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:36:30 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/19 20:59:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 00:21:39 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		len1;
 	int		len2;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = (int) ft_strlen(s1);
+	len2 = (int) ft_strlen(s2);
 	if (!s1)
 		s1 = ft_calloc(1, 1);
 	if (!s1 && !s2)
