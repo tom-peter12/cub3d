@@ -1,5 +1,4 @@
 *.o
-*.cub
 cub3D
 objects/
 *.a

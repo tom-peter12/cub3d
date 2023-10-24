@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_double_array_free.c                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:31:05 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 17:35:58 by tpetros          ###   ########.fr       */
+/*   Created: 2023/10/24 17:28:34 by tpetros           #+#    #+#             */
+/*   Updated: 2023/10/24 17:29:24 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-void	ft_double_array_free(char **arr)
+int	ft_init_parser(t_parse *parse)
 {
-	char	**tmp;
-
-	tmp = arr;
-	if (!arr)
-		return ;
-	while (tmp && *tmp)
-	{
-		free(*tmp);
-		*tmp = NULL;
-		tmp++;
-	}
-	free(arr);
+	parse->line = NULL;
+	parse->map_file = NULL;
+	parse->map_fd = -1;
+	parse->map = (char **) ft_calloc(1, sizeof(char *));
+	if (!parse->map)
+		return (ft_putendl_fd("Error\nAllocation failed", 2), 1);
+	parse->ceiling = NULL;
+	parse->floor = NULL;
+	parse->no = NULL;
+	parse->so = NULL;
+	parse->we = NULL;
+	parse->ea = NULL;
+	return (0);
 }

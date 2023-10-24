@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/19 21:28:15 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:43:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,19 @@ typedef struct s_data
 	t_cmlx			*cmlx;
 }	t_data;
 
+int		ft_init_parser(t_parse *parse);
 
+// parse_arg
+int		ft_validate_cub(t_parse *parse);
+int		ft_validate_args(t_parse *parse, int argc, char **argv);
+
+
+// parse_fill
+void	ft_fill_map_parser(t_parse *parse, char *str);
+int		ft_fill_parser(t_parse *parse);
+
+// parse_utils
+int		ft_is_dir(char *dir);
+int		ft_check_file(char *path);
 
 # endif

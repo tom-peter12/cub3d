@@ -6,12 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:02:30 by tpetros           #+#    #+#             */
-/*   Updated: 2022/05/30 17:03:23 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:59:57 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "../includes/libft.h"
 
 char	*ft_strcat(char *dest, char *src)
 {

@@ -6,12 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:03:35 by tpetros           #+#    #+#             */
-/*   Updated: 2022/05/30 17:03:38 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 18:00:28 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "../includes/libft.h"
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {

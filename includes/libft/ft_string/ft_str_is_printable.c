@@ -6,11 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:18:28 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/18 20:20:38 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:59:46 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../includes/libft.h"
 
 int	ft_str_is_printable(char *str)
 {

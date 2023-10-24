@@ -6,11 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:16:42 by tpetros           #+#    #+#             */
-/*   Updated: 2022/05/28 18:10:21 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 18:00:41 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../includes/libft.h"
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {

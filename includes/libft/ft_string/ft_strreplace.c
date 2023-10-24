@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_double_array_free.c                             :+:      :+:    :+:   */
+/*   ft_strreplace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:31:05 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 17:35:58 by tpetros          ###   ########.fr       */
+/*   Created: 2023/10/24 17:59:16 by tpetros           #+#    #+#             */
+/*   Updated: 2023/10/24 18:08:13 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/libft.h"
+#include "../includes/libft.h"
 
-void	ft_double_array_free(char **arr)
+char	*ft_strreplace(char **pold, const char *new)
 {
-	char	**tmp;
-
-	tmp = arr;
-	if (!arr)
-		return ;
-	while (tmp && *tmp)
-	{
-		free(*tmp);
-		*tmp = NULL;
-		tmp++;
-	}
-	free(arr);
+	if (!pold)
+		return NULL;
+	if (*pold)
+		free(*pold);
+	if (new)
+		*pold = ft_strdup(new);
+	else
+		*pold = NULL;
+	return (*pold);
 }
+

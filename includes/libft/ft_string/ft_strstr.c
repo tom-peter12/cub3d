@@ -6,12 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:03:48 by tpetros           #+#    #+#             */
-/*   Updated: 2022/05/30 17:03:53 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/24 18:00:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "../includes/libft.h"
 
 char	*ft_strstr(char *str, char *to_find)
 {

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_double_array_free.c                             :+:      :+:    :+:   */
+/*   ft_double_array_printer.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:31:05 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 17:35:58 by tpetros          ###   ########.fr       */
+/*   Created: 2023/10/24 14:29:03 by tpetros           #+#    #+#             */
+/*   Updated: 2023/10/24 14:31:25 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/libft.h"
+#include "../includes/libft.h"
 
-void	ft_double_array_free(char **arr)
+void	ft_double_array_printer(char **arr)
 {
-	char	**tmp;
+	int	i;
 
-	tmp = arr;
-	if (!arr)
-		return ;
-	while (tmp && *tmp)
+	i = 0;
+	while (arr && arr[i])
 	{
-		free(*tmp);
-		*tmp = NULL;
-		tmp++;
+		ft_putstr_fd(arr[i], 1);
+		i++;
 	}
-	free(arr);
 }

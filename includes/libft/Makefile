@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 17:16:53 by tpetros           #+#    #+#              #
-#    Updated: 2023/10/19 21:00:41 by tpetros          ###   ########.fr        #
+#    Updated: 2023/10/24 18:10:09 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_FILES = ft_array/ft_rev_int_tab.c \
 			ft_array/ft_sort_int_tab.c \
 			ft_array/ft_print_array.c \
 			ft_array/ft_double_array_free.c \
+			ft_array/ft_double_array_printer.c \
 			ft_ascii_check/ft_is_negative.c \
 			ft_ascii_check/ft_isalnum.c \
 			ft_ascii_check/ft_isalpha.c \
@@ -87,6 +88,7 @@ SRC_FILES = ft_array/ft_rev_int_tab.c \
 			ft_string/ft_strncpy.c \
 			ft_string/ft_strnstr.c \
 			ft_string/ft_strrchr.c \
+			ft_string/ft_strreplace.c \
 			ft_string/ft_strstr.c \
 			ft_string/ft_strtrim.c \
 			ft_string/ft_strupcase.c \
