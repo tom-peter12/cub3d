@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 17:53:54 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/10/28 01:06:35 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@ void	ft_init_win(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	*data;
-	t_parse	*parse;
+	t_parse	parse;
 	
-	parse = ft_calloc(1, sizeof(parse));
-	if (ft_init_parser(parse))
+	if (ft_validate_args(&parse, argc, argv))
 		return (1);
-	if (ft_validate_args(parse, argc, argv))
-		return (1);
-	if (ft_validate_cub(parse))
+	if (ft_validate_cub(&parse))
 		return (1);
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
