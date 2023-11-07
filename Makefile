@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/03 19:50:35 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/07 10:35:53 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)%.c
 
 $(NAME): $(OBJS)
 	# $(MAKE) -C $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKER) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKER) -g -o $(NAME)
 
 $(LIBFT):
 	@make -sC ./includes/libft
