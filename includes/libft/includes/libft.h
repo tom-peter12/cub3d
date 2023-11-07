@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:41:38 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 18:09:39 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 11:47:33 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char		*ft_substr(char const *src, unsigned int start, size_t len);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
+char		**ft_wsplit(const char *str);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));

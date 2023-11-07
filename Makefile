@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/07 10:35:53 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/07 12:10:28 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,18 +44,21 @@ all: $(OBJ_PATH) $(LIBFT) $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	
+$(LIBFT):
+	# make -C ./includes/libft  2> /dev/null
 
 $(NAME): $(OBJS)
-	# $(MAKE) -C $(MLX)
+	@echo "Compiling mlx"
+	# $(MAKE) -C $(MLX) 2> /dev/null
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKER) -g -o $(NAME)
 
-$(LIBFT):
-	@make -sC ./includes/libft
 
 $(OBJ_PATH):
 	mkdir -p $(addprefix $(OBJ_PATH)/, $(SRC_DIRS))
 
 clean:
+	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
 	# @make clean -sC $(MLX)
 	# @make clean -sC ./includes/libft
@@ -63,9 +66,14 @@ clean:
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	@make fclean -sC ./includes/libft
+	# @make fclean -sC ./includes/libft
 
 re: fclean all
+
+push:
+	git add .
+	git commit -m "AT $(date +%Y%m%d%H%M%S) BY $(whoami)"
+	git push
 
 .PHONY: all clean fclean re
 

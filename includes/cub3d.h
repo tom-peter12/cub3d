@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/28 01:06:55 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 11:27:04 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_parse
 	char	*so;
 	char	*we;
 	char	*ea;
-}	t_parse;
+}			t_parse;
 
 typedef struct s_data
 {

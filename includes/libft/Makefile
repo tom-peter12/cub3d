@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 17:16:53 by tpetros           #+#    #+#              #
-#    Updated: 2023/10/24 18:10:09 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/07 11:47:52 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC_FILES = ft_array/ft_rev_int_tab.c \
 			ft_out/ft_putstr_fd.c \
 			ft_out/ft_putstr_non_printable.c \
 			ft_string/ft_split.c \
+			ft_string/ft_wsplit.c \
 			ft_string/ft_str_is_alpha.c \
 			ft_string/ft_str_is_lowercase.c \
 			ft_string/ft_str_is_numeric.c \
