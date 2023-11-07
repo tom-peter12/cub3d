@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 12:38:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:45:11 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_validate_args(t_parse *parse, int argc, char **argv)
 	char	**hold;
 
 	if (argc != 2 || argv[1][0] == '\0')
-		return (ft_putendl_fd("Error\nInvalid number of arguments", 2), 1);
+		return (ft_putendl_fd(INVALID_ARG_NUM, 2), 1);
 	hold = ft_wsplit(argv[1]);
 	if (ft_strcmp(hold[0] + ft_strlen(hold[0]) - 4, ".cub") != 0
-	|| (ft_strcmp(hold[0], ".cub") == 0))
+		|| (ft_strcmp(hold[0], ".cub") == 0))
 	{
-		ft_putendl_fd("Error\nInvalid file extension", 2);
+		ft_putendl_fd(INVALID_FILE_EXT, 2);
 		return (1);
 	}
 	parse->map_file = ft_strdup(hold[0]);
