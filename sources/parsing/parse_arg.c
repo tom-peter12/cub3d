@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 11:58:16 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:38:52 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 int	ft_validate_cub(t_parse *parse)
 {
-	parse->map_fd = open(parse->map_file, O_RDONLY);
-	if (parse->map_fd == -1)
-	{
-		ft_putendl_fd("Error", 2);
-		return (perror(""), 1);
-	}
-	if (ft_is_dir(parse->map_file))
+	if (ft_check_file(parse->map_file))
 		return (1);
+	parse->map_fd = open(parse->map_file, O_RDONLY);
 	if (ft_fill_parser(parse))
 		return (1);	
 	return (0);

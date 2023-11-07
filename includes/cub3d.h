@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 11:27:04 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:26:31 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,23 @@
 # define WIN_WIDTH  800
 # define WIN_HEIGHT 600
 
-typedef enum s_start_pos
+typedef enum s_map_dir
 {
 	NO = 0,
 	SO,
 	WE,
-	EA
-} e_start_pos;
+	EA,
+	F,
+	C
+} e_map_dir;
+
+typedef enum s_start_pos
+{
+	N = 0,
+	S,
+	W,
+	E
+}	e_start_pos;
 
 typedef struct s_cmlx
 {
@@ -56,6 +66,7 @@ typedef struct s_parse
 	char	*so;
 	char	*we;
 	char	*ea;
+	int		dup_check[6];
 }			t_parse;
 
 typedef struct s_data
@@ -76,5 +87,6 @@ int		ft_fill_parser(t_parse *parse);
 // parse_utils
 int		ft_is_dir(char *dir);
 int		ft_check_file(char *path);
+int		ft_isattr_dup(t_parse *parse, int dir);
 
 # endif
