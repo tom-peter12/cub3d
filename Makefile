@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/07 12:12:26 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/07 12:14:07 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ re: fclean all
 
 push:
 	git add .
-	git commit -m "AT $(date +%Y%m%d%H%M%S) BY $(whoami)"
+	git commit -m "AT $(shell date +%Y%m%d%H%M%S) BY $(shell whoami)"
 	# git push
 
 .PHONY: all clean fclean re
