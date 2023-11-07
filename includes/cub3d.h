@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 15:44:24 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:24:57 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ int		ft_fill_parser(t_parse *parse);
 int		ft_is_dir(char *dir);
 int		ft_check_file(char *path);
 int		ft_isattr_dup(t_parse *parse, int dir);
+
+int		ft_color_validate(char *str);
 
 #endif

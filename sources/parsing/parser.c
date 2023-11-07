@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 15:38:32 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:35:15 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_is_all_digit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ' ')
 			return (0);
@@ -39,17 +39,17 @@ int	ft_color_validate(char *str)
 		colors = ft_split(tmp[1], ',');
 	while (colors && colors[++i])
 	{
-		if (!ft_is_all_digit(colors[i]))
+		if (!ft_is_all_digit(ft_strtrim(colors[i], " \t\n\v\f\r")))
 		{
 			ft_double_array_free(tmp);
 			ft_double_array_free(colors);
-			return (ft_putendl_fd("Error\nColor must be digits", 2), 1);
+			return (ft_putendl_fd(INVALID_COLOR, 2), 1);
 		}
 		if (ft_atoi(colors[i]) < 0 || ft_atoi(colors[i]) > 255)
 		{
 			ft_double_array_free(tmp);
 			ft_double_array_free(colors);
-			return (ft_putendl_fd("Error\nColor out of range", 2), 1);
+			return (ft_putendl_fd(COLOR_OUT_OF_RANGE, 2), 1);
 		}
 	}
 	return (0);

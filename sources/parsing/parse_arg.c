@@ -6,11 +6,32 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 15:45:11 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:46:22 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+char	*ft_returner(char *src)
+{
+	char	**tmp;
+	char	*ret;
+
+	tmp = ft_split(src, ' ');
+	ret = ft_strtrim(tmp[1], " \t\r\v\f");
+	ft_double_array_free(tmp);
+	tmp = NULL;
+	return (ret);
+}
+
+int	ft_validate_parsed(t_parse *parse)
+{
+	if (ft_color_validate(parse->floor))
+		return (1);
+	if (ft_color_validate(parse->ceiling))
+		return (1);
+	return (0);
+}
 
 int	ft_validate_cub(t_parse *parse)
 {
@@ -18,7 +39,9 @@ int	ft_validate_cub(t_parse *parse)
 		return (1);
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	if (ft_fill_parser(parse))
-		return (1);	
+		return (1);
+	if (ft_validate_parsed(parse))
+		return (1);
 	return (0);
 }
 
