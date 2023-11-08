@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/08 15:25:13 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/08 15:51:08 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	@echo "Compiling mlx"
-	$(MAKE) -C $(MLX) 2> /dev/null
+	# $(MAKE) -C $(MLX) 2> /dev/null
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  $(LINKER)  -o $(NAME)
 
 
@@ -59,13 +59,13 @@ $(OBJ_PATH):
 clean:
 	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
-	@make clean -sC $(MLX)
-	@make clean -sC ./includes/libft
+	# @make clean -sC $(MLX)
+	# @make clean -sC ./includes/libft
 
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	@make fclean -sC ./includes/libft
+	# @make fclean -sC ./includes/libft
 
 re: fclean all
 

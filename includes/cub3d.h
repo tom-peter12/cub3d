@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 14:50:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:35:35 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct s_parse
 // {
 // 	int	ray;
 // }	t_raytrace;
+
+// init.c
+int	ft_init_parse(t_parse *parse);
 
 typedef struct s_data
 {
