@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 13:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/09/30 21:15:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:45:17 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *src)
 	duplicated = (char *)malloc((ft_strlen(src) * sizeof(char)) + 1);
 	if (!duplicated)
 		return (NULL);
-	while (src[i] != '\0')
+	while (src && src[i] != '\0')
 	{
 		duplicated[i] = src[i];
 		i++;

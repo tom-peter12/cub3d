@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/07 12:16:11 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/08 15:25:13 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,10 @@ SRC       = $(wildcard $(addprefix $(SRC_PATH), $(addsuffix /*.c, $(SRC_DIRS))))
 OBJS      = $(patsubst $(SRC_PATH)%.c,$(OBJ_PATH)/%.o,$(SRC))
 
 CC        = cc
-CFLAGS    = -Wall -Wextra -Werror
+CFLAGS    = -Wall -Wextra -Werror -g
 RM        = rm -rf
 MacLinker = -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink = -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz
-sanitize  = -fsanitize=address -g3 -fno-omit-frame-pointer
 
 OS := $(shell uname)
 
@@ -46,12 +45,12 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 	
 $(LIBFT):
-	# make -C ./includes/libft  2> /dev/null
+	make -C ./includes/libft  2> /dev/null
 
 $(NAME): $(OBJS)
 	@echo "Compiling mlx"
-	# $(MAKE) -C $(MLX) 2> /dev/null
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKER) -g -o $(NAME)
+	$(MAKE) -C $(MLX) 2> /dev/null
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  $(LINKER)  -o $(NAME)
 
 
 $(OBJ_PATH):
@@ -60,13 +59,13 @@ $(OBJ_PATH):
 clean:
 	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
-	# @make clean -sC $(MLX)
-	# @make clean -sC ./includes/libft
+	@make clean -sC $(MLX)
+	@make clean -sC ./includes/libft
 
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	# @make fclean -sC ./includes/libft
+	@make fclean -sC ./includes/libft
 
 re: fclean all
 

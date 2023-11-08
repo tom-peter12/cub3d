@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 16:24:57 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:50:52 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_parse
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		dup_check[7];
+	int		*dup_check;
 }			t_parse;
 
 // typedef struct s_player

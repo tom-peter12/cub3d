@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:30:01 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/03 18:18:33 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:04:41 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (sign * number > INT_MAX || sign * number < INT_MIN || c > 10)
-		return (0);
+		return (-1);
 	return ((int )(number * sign));
 }

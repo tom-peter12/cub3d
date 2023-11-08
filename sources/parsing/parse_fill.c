@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 16:29:56 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:52:15 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 
 int	ft_fill_parser(t_parse *parse)
 {
-	parse->map = (char **)malloc(sizeof(char *) * 100);
-	if (parse->map == NULL)
-		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
