@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 16:34:15 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:12:19 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	ft_init_win(t_data *data)
 			"Wolfe... Nah cub3D");
 	mlx_loop(data->cmlx);
 }
-
-
 
 int	main(int argc, char **argv)
 {

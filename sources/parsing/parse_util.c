@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:40:58 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 14:30:13 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:15:29 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	ft_check_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error", 2);
+		ft_putstr_fd("Error: ", 2);
+		ft_putendl_fd(path, 2);
 		return (perror(""), 1);
 	}
 	if (ft_is_dir(path))

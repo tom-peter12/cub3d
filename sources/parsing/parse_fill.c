@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 14:52:15 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/13 11:27:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	ft_fill_map_parser(t_parse *parse, char *str)
 {
 	static int	i;
 	
-	if (ft_is_map_last(parse))
-		return (1);
 	if (str)
 		parse->map[i] = ft_strdup(str);
 	i++;
@@ -41,7 +39,7 @@ int	ft_fill_map_parser(t_parse *parse, char *str)
 
 int	ft_fill_attributes(t_parse *parse, char *str)
 {
-	char	**tmp;
+	char		**tmp;
 	
 	tmp = ft_split(str, ' ');
 	if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
@@ -59,12 +57,32 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 	else if (ft_strchr(tmp[0], '1') || ft_strchr(tmp[0], '0'))
 	{
 		if (ft_fill_map_parser(parse, str))
-			return (1);
+			return (ft_double_array_free(tmp), 1);
 	}
 	else if (tmp[0][0] != ' ' && tmp[0][0] != '\n' && tmp[0][0] != '\0')
-		return (1);
+	{
+		ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
+		return (ft_double_array_free(tmp), 1);
+	}
 	ft_double_array_free(tmp);
 	tmp = NULL;
+	return (0);
+}
+
+int	ft_empty_field(t_parse *parse)
+{
+	if (parse->no == NULL)
+		return (ft_putendl_fd(MISSING_NO, 2), 1);
+	else if (parse->so == NULL)
+		return (ft_putendl_fd(MISSING_SO, 2), 1);
+	else if (parse->we == NULL)
+		return (ft_putendl_fd(MISSING_WE, 2), 1);
+	else if (parse->ea == NULL)
+		return (ft_putendl_fd(MISSING_EA, 2), 1);
+	else if (parse->floor == NULL)
+		return (ft_putendl_fd(MISSING_F, 2), 1);
+	else if (parse->ceiling == NULL)
+		return (ft_putendl_fd(MISSING_C, 2), 1);
 	return (0);
 }
 
@@ -77,17 +95,11 @@ int	ft_fill_parser(t_parse *parse)
 	{
 		if (ft_fill_attributes(parse, parse->line))
 			return (1);
-		// printf("%s", parse->line);
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
-	// printf("%s", parse->no);
-	// printf("%s", parse->so);
-	// printf("%s", parse->we);
-	// printf("%s", parse->ea);
-	// printf("%s", parse->floor);
-	// printf("%s\n", parse->ceiling);
-	// ft_double_array_printer(parse->map);
+	if(ft_empty_field(parse))
+		return (1);
 	return (0);
 }
  
