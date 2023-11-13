@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 11:27:44 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/13 12:44:20 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 
 int	ft_empty_field(t_parse *parse)
 {
-	if (parse->no == NULL)
+	if (parse->no == NULL )
 		return (ft_putendl_fd(MISSING_NO, 2), 1);
 	else if (parse->so == NULL)
 		return (ft_putendl_fd(MISSING_SO, 2), 1);
@@ -100,6 +100,13 @@ int	ft_fill_parser(t_parse *parse)
 	}
 	if(ft_empty_field(parse))
 		return (1);
+	// printf("%s\n", parse->no);
+	// printf("%s\n", parse->so);
+	// printf("%s\n", parse->we);
+	// printf("%s\n", parse->ea);
+	// printf("%s\n", parse->floor);
+	// printf("%s\n", parse->ceiling);
+	// ft_double_array_printer(parse->map);
 	return (0);
 }
  

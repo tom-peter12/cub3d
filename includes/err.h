@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 11:19:55 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/13 12:51:45 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,13 @@
 # define MISSING_C "Error\nMissing CEILING Field"
 
 # define UNKNOWN_IDENTIFIER "Error\nUnknown Identifier"
+
+# define MISSIN_NO_PATH "Error\nMissing Path for NORTH Field"
+
+# define MISSIN_SO_PATH "Error\nMissing Path for SOUTH Field"
+
+# define MISSIN_WE_PATH "Error\nMissing Path for WEST Field"
+
+# define MISSIN_EA_PATH "Error\nMissing Path for EAST Field"
 
 #endif
