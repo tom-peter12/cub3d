@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 16:35:27 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/16 18:49:17 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	ft_init_parse(t_parse *parse)
 	if (!parse->dup_check)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	ft_bzero(parse->dup_check, 7 * sizeof(int));
+	if (!parse->map_file)
+		parse->map_file = NULL;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/08 16:35:35 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/16 19:50:34 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,10 @@ typedef struct s_data
 // parse_arg
 int		ft_validate_cub(t_parse *parse);
 int		ft_validate_args(t_parse *parse, int argc, char **argv);
+int		ft_validate_parsed(t_parse *parse);
 
 // parse_fill
-int		ft_fill_map_parser(t_parse *parse, char *str);
+void	ft_fill_map_parser(t_parse *parse, char *str);
 int		ft_fill_parser(t_parse *parse);
 
 // parse_utils

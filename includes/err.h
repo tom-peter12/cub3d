@@ -6,12 +6,14 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 12:51:45 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/16 18:47:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERR_H
 # define ERR_H
+
+# define CUB_FILE_MISSING "Error\nCub File Not Provided"
 
 # define MALLOC_FAIL "Error\nMalloc Failed"
 

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 13:07:31 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/16 19:19:17 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,3 @@ int	ft_validate_parsed(t_parse *parse)
 	return (0);
 }
 
-int	ft_validate_cub(t_parse *parse)
-{
-	if (ft_check_file(parse->map_file))
-		return (1);
-	parse->map_fd = open(parse->map_file, O_RDONLY);
-	if (ft_fill_parser(parse))
-		return (1);
-	if (ft_validate_parsed(parse))
-		return (1);
-	return (0);
-}

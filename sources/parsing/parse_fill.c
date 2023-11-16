@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 12:44:20 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/16 19:29:35 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ int	ft_is_map_last(t_parse *parse)
 	return (0);
 }
 
-int	ft_fill_map_parser(t_parse *parse, char *str)
+void	ft_fill_map_parser(t_parse *parse, char *str)
 {
 	static int	i;
 	
 	if (str)
 		parse->map[i] = ft_strdup(str);
 	i++;
-	return (0);
 }
 
 
@@ -54,11 +53,8 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 		parse->floor = ft_strdup(str);
 	else if (ft_strcmp(tmp[0], "C") == 0 && !ft_isattr_dup(parse, C))
 		parse->ceiling = ft_strdup(str);
-	else if (ft_strchr(tmp[0], '1') || ft_strchr(tmp[0], '0'))
-	{
-		if (ft_fill_map_parser(parse, str))
-			return (ft_double_array_free(tmp), 1);
-	}
+	else if (tmp[0][0] == '1' || ft_strchr(tmp[0], '0'))
+		ft_fill_map_parser(parse, str);
 	else if (tmp[0][0] != ' ' && tmp[0][0] != '\n' && tmp[0][0] != '\0')
 	{
 		ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
@@ -88,6 +84,7 @@ int	ft_empty_field(t_parse *parse)
 
 int	ft_fill_parser(t_parse *parse)
 {
+	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
@@ -98,15 +95,8 @@ int	ft_fill_parser(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
-	if(ft_empty_field(parse))
+	if (ft_empty_field(parse))
 		return (1);
-	// printf("%s\n", parse->no);
-	// printf("%s\n", parse->so);
-	// printf("%s\n", parse->we);
-	// printf("%s\n", parse->ea);
-	// printf("%s\n", parse->floor);
-	// printf("%s\n", parse->ceiling);
-	// ft_double_array_printer(parse->map);
 	return (0);
 }
  
