@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:31:05 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 17:35:58 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:00:52 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	ft_double_array_free(char **arr)
 		*tmp = NULL;
 		tmp++;
 	}
-	free(arr);
+	// free(arr);
 }

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/16 19:50:34 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:37:23 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_parse
 	char	*we;
 	char	*ea;
 	int		*dup_check;
+	int		map_height;
+	int		map_width;
 }			t_parse;
 
 // typedef struct s_player
@@ -82,8 +84,9 @@ typedef struct s_parse
 // 	int	ray;
 // }	t_raytrace;
 
-// init.c
-int	ft_init_parse(t_parse *parse);
+// init_deinit.c
+int		ft_init_parse(t_parse *parse);
+void	exit_return_freer(t_parse *parse);
 
 typedef struct s_data
 {
@@ -104,6 +107,8 @@ int		ft_is_dir(char *dir);
 int		ft_check_file(char *path);
 int		ft_isattr_dup(t_parse *parse, int dir);
 
+// parse
 int		ft_color_validate(char *str);
+void	parser(t_parse *parse, int argc, char **argv);
 
 #endif

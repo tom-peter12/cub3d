@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/16 19:29:35 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/20 19:12:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_fill_map_parser(t_parse *parse, char *str)
 	if (str)
 		parse->map[i] = ft_strdup(str);
 	i++;
+	if (i == parse->map_height)
+		parse->map[i] = 0;
 }
 
 
@@ -82,8 +84,43 @@ int	ft_empty_field(t_parse *parse)
 	return (0);
 }
 
+void	ft_map_dimension(t_parse *parse)
+{
+	char	**tmp;
+	int		f;
+
+	(0 || (parse->map_fd = open(parse->map_file, O_RDONLY)) || (f = 0));
+	parse->line = get_next_line(parse->map_fd);
+	while (parse->line)
+	{
+		tmp = ft_split(parse->line, ' ');
+		if ((int)ft_strlen(tmp[0]) - 1 > parse->map_width)
+			parse->map_width = ft_strlen(tmp[0]) - 1;
+		if (tmp[0][0] == '1' || tmp[0][0] == '0')
+			(0 || ((parse->map_height++) && (f++)));
+		if (f > 0 && ft_strcmp(tmp[0], "\n") == 0)
+		{
+			ft_putendl_fd(NEW_LINE_IN_MAP, 2);
+			free(parse->line);
+			ft_double_array_free(tmp);
+			close(parse->map_fd);
+			exit_return_freer(parse);
+		}
+		free(parse->line);
+		ft_double_array_free(tmp);
+		parse->line = get_next_line(parse->map_fd);
+	}
+	close(parse->map_fd);
+	free(parse->line);
+}
+
 int	ft_fill_parser(t_parse *parse)
 {
+	ft_map_dimension(parse);
+	printf("map dim %d X %d\n", parse->map_width, parse->map_height);
+	parse->map = (char **)malloc(sizeof(char *) * parse->map_height + 1);
+	if (parse->map == NULL)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
@@ -99,4 +136,3 @@ int	ft_fill_parser(t_parse *parse)
 		return (1);
 	return (0);
 }
- 

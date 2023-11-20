@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/16 18:47:44 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:57:59 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,11 @@
 # define MISSIN_WE_PATH "Error\nMissing Path for WEST Field"
 
 # define MISSIN_EA_PATH "Error\nMissing Path for EAST Field"
+
+# define MULTIPLE_PLAYER_POS "Error\nMultiple Player Position Found"
+
+# define PLAYER_POS_NOT_FOUND "Error\nPlayer Position Not Found"
+
+# define NEW_LINE_IN_MAP "Error\nNew Line in Map"
 
 #endif
