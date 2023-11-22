@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/20 19:15:23 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:32:08 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,43 @@ int	ft_is_all_digit(char *str)
 	}
 	return (1);
 }
+static int ft_invalid_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (!ft_strchr("FC,0123456789 \t\n", str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	ft_color_validate(char *str)
 {
-	char	**tmp;
 	char	**colors;
 	int		i;
 
-	i = -1;
-	tmp = ft_split(str, ' ');
-	colors = NULL;
-	if (tmp && tmp[0] && tmp[1])
-		colors = ft_split(tmp[1], ',');
+	if (ft_invalid_char(str))
+		return (ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
+	i = 0;
+	colors = ft_msplit(str, " ,\n\t");
+	if (ft_double_array_len(colors) != 4)
+	{
+		ft_double_array_free(colors);
+		return (ft_putendl_fd(COLOR_SHOULD_RGB, 2), 1);
+	}
 	while (colors && colors[++i])
 	{
-		if (!ft_is_all_digit(ft_strtrim(colors[i], " \t\n\v\f\r")))
+		if (!ft_is_all_digit(colors[i]))
 		{
-			ft_double_array_free(tmp);
 			ft_double_array_free(colors);
 			return (ft_putendl_fd(INVALID_COLOR, 2), 1);
 		}
 		if (ft_atoi(colors[i]) < 0 || ft_atoi(colors[i]) > 255)
 		{
-			ft_double_array_free(tmp);
 			ft_double_array_free(colors);
 			return (ft_putendl_fd(COLOR_OUT_OF_RANGE, 2), 1);
 		}

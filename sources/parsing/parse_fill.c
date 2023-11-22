@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/20 19:12:49 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:30:51 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 {
 	char		**tmp;
 	
-	tmp = ft_split(str, ' ');
+	tmp = ft_msplit(str, " \t");
 	if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
 		parse->no = ft_strdup(str);
 	else if (ft_strcmp(tmp[0], "SO") == 0 && !ft_isattr_dup(parse, SO))
@@ -87,9 +87,8 @@ int	ft_empty_field(t_parse *parse)
 void	ft_map_dimension(t_parse *parse)
 {
 	char	**tmp;
-	int		f;
 
-	(0 || (parse->map_fd = open(parse->map_file, O_RDONLY)) || (f = 0));
+	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	while (parse->line)
 	{
@@ -97,13 +96,11 @@ void	ft_map_dimension(t_parse *parse)
 		if ((int)ft_strlen(tmp[0]) - 1 > parse->map_width)
 			parse->map_width = ft_strlen(tmp[0]) - 1;
 		if (tmp[0][0] == '1' || tmp[0][0] == '0')
-			(0 || ((parse->map_height++) && (f++)));
-		if (f > 0 && ft_strcmp(tmp[0], "\n") == 0)
+			parse->map_height++;
+		if (parse->map_height > 0 && ft_strcmp(tmp[0], "\n") == 0)
 		{
 			ft_putendl_fd(NEW_LINE_IN_MAP, 2);
-			free(parse->line);
 			ft_double_array_free(tmp);
-			close(parse->map_fd);
 			exit_return_freer(parse);
 		}
 		free(parse->line);

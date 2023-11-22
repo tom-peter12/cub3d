@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/20 17:37:23 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:28:19 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,21 @@ typedef struct s_cmlx
 	int				endian;
 }	t_cmlx;
 
+typedef struct s_file
+{
+	char 	*line;
+	char	*map_file;
+	int		fd;
+	char	**file_cntnt;
+	int		file_len;
+}			t_file;
+
+typedef struct s_map_dim
+{
+	size_t	height;
+	size_t	width;
+}			t_map_dim;
+
 typedef struct s_parse
 {
 	char	*line;
@@ -71,6 +86,8 @@ typedef struct s_parse
 	int		map_height;
 	int		map_width;
 }			t_parse;
+
+
 
 // typedef struct s_player
 // {

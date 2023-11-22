@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:41:38 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/07 11:47:33 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/21 11:02:30 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		ft_sort_int_tab(int *tab, int size);
 void		ft_print_array(int *array, int size);
 void		ft_double_array_free(char **arr);
 void		ft_double_array_printer(char **arr);
+size_t		ft_double_array_len(char **str);
 
 // ft_ascii_check
 void		ft_is_negative(int n);
@@ -77,6 +78,7 @@ char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		**ft_wsplit(const char *str);
+char		**ft_msplit(char *s, char *c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));

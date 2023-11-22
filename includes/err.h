@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/20 17:57:59 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/21 15:34:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@
 # define PLAYER_POS_NOT_FOUND "Error\nPlayer Position Not Found"
 
 # define NEW_LINE_IN_MAP "Error\nNew Line in Map"
+
+# define INVALID_CHAR_COLOR "Error\nInvalid Character in Color"
+
+# define COLOR_SHOULD_RGB "Error\nColor should be RGB"
 
 #endif

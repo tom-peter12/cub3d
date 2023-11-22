@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/20 17:49:45 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/21 14:57:24 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,12 +60,12 @@ clean:
 	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
 	# @make clean -sC $(MLX)
-	# @make clean -sC ./includes/libft
+	@make clean -sC ./includes/libft
 
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	# @make fclean -sC ./includes/libft
+	@make fclean -sC ./includes/libft
 
 re: fclean all
 

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_double_array_free.c                             :+:      :+:    :+:   */
+/*   ft_double_array_len.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:31:05 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/21 14:57:10 by tpetros          ###   ########.fr       */
+/*   Created: 2023/11/21 10:58:20 by tpetros           #+#    #+#             */
+/*   Updated: 2023/11/21 11:07:05 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/libft.h"
 
-void	ft_double_array_free(char **arr)
+size_t	ft_double_array_len(char **str)
 {
-	char	**tmp;
+	size_t	len;
 
-	tmp = arr;
-	if (!arr)
-		return ;
-	while (tmp && *tmp)
-	{
-		if (*tmp)
-			free(*tmp);
-		*tmp = NULL;
-		tmp++;
-	}
-	// free(arr);
+	len = 0;
+	while (str && str[len])
+		len++;
+	return (len);
 }
