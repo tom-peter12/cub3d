@@ -3,7 +3,7 @@ SO ./sources/texture/south_texture
 WE ./sources/texture/west_texture
 EA ./sources/texture/east_texture
 
-F 230,100,0
+F 230       ,    100,0
 C 225,30,0
 
         1111111111111111111111111
