@@ -6,30 +6,16 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/22 14:30:51 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/24 20:17:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_is_map_last(t_parse *parse)
-{
-	int	i;
-
-	i = 0;
-	while (i < 6)
-	{
-		if (parse->dup_check[i] == 0)
-			return (ft_putendl_fd(MAP_NOT_LAST, 2), 1);
-		i++;
-	}
-	return (0);
-}
-
 void	ft_fill_map_parser(t_parse *parse, char *str)
 {
 	static int	i;
-	
+
 	if (str)
 		parse->map[i] = ft_strdup(str);
 	i++;
@@ -37,91 +23,98 @@ void	ft_fill_map_parser(t_parse *parse, char *str)
 		parse->map[i] = 0;
 }
 
+int	is_defo_map_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] != '\n' || str[i] != ' ' || str[i] != 'W' || str[i] != 'N'
+				|| str[i] != 'S' || str[i] != 'E' || str[i] != '1'
+				|| str[i] != '0'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	ft_fill_attributes(t_parse *parse, char *str)
 {
 	char		**tmp;
-	
-	tmp = ft_msplit(str, " \t");
-	if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
-		parse->no = ft_strdup(str);
-	else if (ft_strcmp(tmp[0], "SO") == 0 && !ft_isattr_dup(parse, SO))
-		parse->so = ft_strdup(str);
-	else if (ft_strcmp(tmp[0], "WE") == 0 && !ft_isattr_dup(parse, WE))
-		parse->we = ft_strdup(str);
-	else if (ft_strcmp(tmp[0], "EA") == 0 && !ft_isattr_dup(parse, EA))
-		parse->ea = ft_strdup(str);
-	else if (ft_strcmp(tmp[0], "F") == 0 && !ft_isattr_dup(parse, F))
-		parse->floor = ft_strdup(str);
-	else if (ft_strcmp(tmp[0], "C") == 0 && !ft_isattr_dup(parse, C))
-		parse->ceiling = ft_strdup(str);
-	else if (tmp[0][0] == '1' || ft_strchr(tmp[0], '0'))
-		ft_fill_map_parser(parse, str);
-	else if (tmp[0][0] != ' ' && tmp[0][0] != '\n' && tmp[0][0] != '\0')
-	{
-		ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
-		return (ft_double_array_free(tmp), 1);
-	}
-	ft_double_array_free(tmp);
-	tmp = NULL;
-	return (0);
-}
+	static int	i = 0;
 
-int	ft_empty_field(t_parse *parse)
-{
-	if (parse->no == NULL )
-		return (ft_putendl_fd(MISSING_NO, 2), 1);
-	else if (parse->so == NULL)
-		return (ft_putendl_fd(MISSING_SO, 2), 1);
-	else if (parse->we == NULL)
-		return (ft_putendl_fd(MISSING_WE, 2), 1);
-	else if (parse->ea == NULL)
-		return (ft_putendl_fd(MISSING_EA, 2), 1);
-	else if (parse->floor == NULL)
-		return (ft_putendl_fd(MISSING_F, 2), 1);
-	else if (parse->ceiling == NULL)
-		return (ft_putendl_fd(MISSING_C, 2), 1);
+	tmp = ft_msplit(str, " ");
+	if (i == 0 && ft_strchr(tmp[0], '1') && is_defo_map_line(tmp[0]))
+		i = 1;
+	if (i == 0)
+	{
+		if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
+			parse->no = ft_strdup(str);
+		else if (ft_strcmp(tmp[0], "SO") == 0 && !ft_isattr_dup(parse, SO))
+			parse->so = ft_strdup(str);
+		else if (ft_strcmp(tmp[0], "WE") == 0 && !ft_isattr_dup(parse, WE))
+			parse->we = ft_strdup(str);
+		else if (ft_strcmp(tmp[0], "EA") == 0 && !ft_isattr_dup(parse, EA))
+			parse->ea = ft_strdup(str);
+		else if (ft_strcmp(tmp[0], "F") == 0 && !ft_isattr_dup(parse, F))
+			parse->floor = ft_strdup(str);
+		else if (ft_strcmp(tmp[0], "C") == 0 && !ft_isattr_dup(parse, C))
+			parse->ceiling = ft_strdup(str);
+		else if (tmp[0][0] != ' ' && tmp[0][0] != '\n' && tmp[0][0] != '\0')
+		{
+			ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
+			return (ft_double_array_free(tmp), 1);
+		}
+	}
+	else
+		ft_fill_map_parser(parse, str);
+	ft_double_array_free(tmp);
 	return (0);
 }
 
 void	ft_map_dimension(t_parse *parse)
 {
 	char	**tmp;
+	int		start_counting;
+	int		len;
 
-	parse->map_fd = open(parse->map_file, O_RDONLY);
-	parse->line = get_next_line(parse->map_fd);
+	(0 || (start_counting = 0) || (len = 0));
 	while (parse->line)
 	{
 		tmp = ft_split(parse->line, ' ');
-		if ((int)ft_strlen(tmp[0]) - 1 > parse->map_width)
-			parse->map_width = ft_strlen(tmp[0]) - 1;
-		if (tmp[0][0] == '1' || tmp[0][0] == '0')
-			parse->map_height++;
-		if (parse->map_height > 0 && ft_strcmp(tmp[0], "\n") == 0)
+		if (tmp && tmp[0])
 		{
-			ft_putendl_fd(NEW_LINE_IN_MAP, 2);
-			ft_double_array_free(tmp);
-			exit_return_freer(parse);
+			len = ft_strlen(tmp[0]) - 1;
+			if (len > parse->map_width)
+				parse->map_width = len;
+			if (start_counting || tmp[0][0] == '1' || tmp[0][0] == '0')
+			{
+				if (!start_counting)
+					start_counting = 1;
+				parse->map_height++;
+			}
 		}
-		free(parse->line);
 		ft_double_array_free(tmp);
+		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
 	close(parse->map_fd);
-	free(parse->line);
 }
 
 int	ft_fill_parser(t_parse *parse)
 {
+	parse->map_fd = open(parse->map_file, O_RDONLY);
+	parse->line = get_next_line(parse->map_fd);
 	ft_map_dimension(parse);
-	printf("map dim %d X %d\n", parse->map_width, parse->map_height);
-	parse->map = (char **)malloc(sizeof(char *) * parse->map_height + 1);
+	// printf("%d X %d\n", parse->map_width, parse->map_height);
+	if (parse->map_height == 0)
+		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
+	parse->map = ft_calloc(sizeof(char *), parse->map_height + 2);
 	if (parse->map == NULL)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
-	if (!parse->line)
-		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
 	while (parse->line)
 	{
 		if (ft_fill_attributes(parse, parse->line))
@@ -129,7 +122,5 @@ int	ft_fill_parser(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
-	if (ft_empty_field(parse))
-		return (1);
 	return (0);
 }

@@ -6,11 +6,28 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/22 14:27:05 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/24 19:20:03 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	ft_empty_tex_field(t_parse *parse)
+{
+	if (parse->no == NULL )
+		return (ft_putendl_fd(MISSING_NO, 2), 1);
+	else if (parse->so == NULL)
+		return (ft_putendl_fd(MISSING_SO, 2), 1);
+	else if (parse->we == NULL)
+		return (ft_putendl_fd(MISSING_WE, 2), 1);
+	else if (parse->ea == NULL)
+		return (ft_putendl_fd(MISSING_EA, 2), 1);
+	else if (parse->floor == NULL)
+		return (ft_putendl_fd(MISSING_F, 2), 1);
+	else if (parse->ceiling == NULL)
+		return (ft_putendl_fd(MISSING_C, 2), 1);
+	return (0);
+}
 
 int	ft_color(t_parse *parse)
 {
@@ -45,14 +62,6 @@ int	ft_texture_files(t_parse *parse)
 	return (0);
 }
 
-int	ft_check_map(t_parse *parse, int i, int j)
-{
-	(void) parse;
-	(void) i;
-	(void) j;
-	return (0);
-}
-
 int	ft_valid_map(t_parse *parse)
 {
 	int	i;
@@ -70,7 +79,7 @@ int	ft_valid_map(t_parse *parse)
 				f++;
 			else if (parse->map[i][j] != '1' && parse->map[i][j] != ' ' &&
 				parse->map[i][j] != '0' && parse->map[i][j] != '\n')
-				return (ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), 1);
+					return (ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), 1);
 			j++;
 		}
 		i++;
@@ -84,11 +93,15 @@ int	ft_valid_map(t_parse *parse)
 
 int	ft_validate_parsed(t_parse *parse)
 {
+	if (ft_empty_tex_field(parse))
+		return (1);
 	if (ft_color(parse))
 		return (1);
 	if (ft_texture_files(parse))
 		return (1);
 	if (ft_valid_map(parse))
+		return (1);
+	if (ft_closed_map(parse))
 		return (1);
 	return (0);
 }

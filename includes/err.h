@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/21 15:34:50 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/24 21:19:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@
 # define INVALID_CHAR_COLOR "Error\nInvalid Character in Color"
 
 # define COLOR_SHOULD_RGB "Error\nColor should be RGB"
+
+# define MAP_NOT_ENCLOSED "Error\nMap Should be Enclosed"
 
 #endif

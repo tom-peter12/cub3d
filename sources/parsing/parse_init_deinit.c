@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/22 14:26:45 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/24 20:49:28 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ void	exit_return_freer(t_parse *parse)
 	if (parse->map_fd)
 		close(parse->map_fd);
 	exit(1);
+}
+
+int	ft_init_valid_map(t_parse *parse, t_valid_map *map, int len)
+{
+	map->tab = ft_calloc(sizeof(char *), len + 1);
+	if (!map->tab)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
+	map->width = parse->map_width;
+	map->height = len;
+	return (0);
 }

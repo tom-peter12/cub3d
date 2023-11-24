@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/22 14:28:19 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/24 20:49:32 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ typedef struct s_file
 	int		file_len;
 }			t_file;
 
-typedef struct s_map_dim
+typedef struct s_valid_map
 {
+	char	**tab;
 	size_t	height;
 	size_t	width;
-}			t_map_dim;
+}			t_valid_map;
 
 typedef struct s_parse
 {
@@ -127,5 +128,10 @@ int		ft_isattr_dup(t_parse *parse, int dir);
 // parse
 int		ft_color_validate(char *str);
 void	parser(t_parse *parse, int argc, char **argv);
+
+
+int		ft_closed_map(t_parse *parse);
+
+int		ft_init_valid_map(t_parse *parse, t_valid_map *map, int len);
 
 #endif
