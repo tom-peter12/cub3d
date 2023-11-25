@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/24 15:37:21 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/25 14:20:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_color_validate(char *str)
 	if (ft_invalid_char(str))
 		return (ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
 	i = 0;
-	colors = ft_msplit(str, " ,\n\t");
+	colors = ft_msplit(str, " ,\n");
 	if (ft_double_array_len(colors) != 4)
 	{
 		ft_double_array_free(colors);

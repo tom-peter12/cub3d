@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/24 20:49:32 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/25 14:07:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ typedef struct s_cmlx
 	int				line_length;
 	int				endian;
 }	t_cmlx;
-
-typedef struct s_file
-{
-	char 	*line;
-	char	*map_file;
-	int		fd;
-	char	**file_cntnt;
-	int		file_len;
-}			t_file;
 
 typedef struct s_valid_map
 {

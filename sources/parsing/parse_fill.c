@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/24 20:17:44 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/25 14:14:51 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,36 @@ int	ft_fill_attributes(t_parse *parse, char *str)
 {
 	char		**tmp;
 	static int	i = 0;
+	char		*stripped;
 
 	tmp = ft_msplit(str, " ");
-	if (i == 0 && ft_strchr(tmp[0], '1') && is_defo_map_line(tmp[0]))
+	stripped = ft_strtrim(tmp[0], "\n");
+	if (i == 0 && ft_strchr(stripped, '1') && is_defo_map_line(stripped))
 		i = 1;
 	if (i == 0)
 	{
-		if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
+		if (ft_strcmp(stripped, "NO") == 0 && !ft_isattr_dup(parse, NO))
 			parse->no = ft_strdup(str);
-		else if (ft_strcmp(tmp[0], "SO") == 0 && !ft_isattr_dup(parse, SO))
+		else if (ft_strcmp(stripped, "SO") == 0 && !ft_isattr_dup(parse, SO))
 			parse->so = ft_strdup(str);
-		else if (ft_strcmp(tmp[0], "WE") == 0 && !ft_isattr_dup(parse, WE))
+		else if (ft_strcmp(stripped, "WE") == 0 && !ft_isattr_dup(parse, WE))
 			parse->we = ft_strdup(str);
-		else if (ft_strcmp(tmp[0], "EA") == 0 && !ft_isattr_dup(parse, EA))
+		else if (ft_strcmp(stripped, "EA") == 0 && !ft_isattr_dup(parse, EA))
 			parse->ea = ft_strdup(str);
-		else if (ft_strcmp(tmp[0], "F") == 0 && !ft_isattr_dup(parse, F))
+		else if (ft_strcmp(stripped, "F") == 0 && !ft_isattr_dup(parse, F))
 			parse->floor = ft_strdup(str);
-		else if (ft_strcmp(tmp[0], "C") == 0 && !ft_isattr_dup(parse, C))
+		else if (ft_strcmp(stripped, "C") == 0 && !ft_isattr_dup(parse, C))
 			parse->ceiling = ft_strdup(str);
-		else if (tmp[0][0] != ' ' && tmp[0][0] != '\n' && tmp[0][0] != '\0')
+		else if (stripped[0] != ' ' && stripped[0] != '\n' && stripped[0] != '\0')
 		{
+			free(stripped);
 			ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
 			return (ft_double_array_free(tmp), 1);
 		}
 	}
 	else
 		ft_fill_map_parser(parse, str);
+	free(stripped);
 	ft_double_array_free(tmp);
 	return (0);
 }
