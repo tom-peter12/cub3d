@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/25 14:14:51 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/25 17:11:20 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	ft_fill_parser(t_parse *parse)
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	ft_map_dimension(parse);
-	// printf("%d X %d\n", parse->map_width, parse->map_height);
 	if (parse->map_height == 0)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
 	parse->map = ft_calloc(sizeof(char *), parse->map_height + 2);

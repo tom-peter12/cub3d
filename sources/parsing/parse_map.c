@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/25 14:07:07 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/25 17:41:34 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,70 @@ static int	ft_is_enclosed(t_valid_map *map, size_t i, size_t j)
 	return (0);
 }
 
+int	check_up_bottom(t_valid_map *map, int pos)
+{
+	int	i;
+	int	len;
+	
+	i = 0;
+	len = ft_strlen(map->tab[pos]) - 1;
+	while (i < len)
+	{
+		if (map->tab[pos][i] != '1' && map->tab[pos][i] != ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int check_edges(t_valid_map *map, int i)
+{
+    int len;
+    int j;
+
+    len = ft_strlen(map->tab[i]) - 2;
+    j = 0;
+    while (map->tab[i][j] == ' ')
+        j++;
+    if (map->tab[i][j] != '1')
+        return (1);
+    while (len > j && map->tab[i][len] == ' ')
+        len--;
+    if (map->tab[i][len] != '1')
+        return (1);
+    for (int k = j + 1; k < len; k++)
+    {
+        if (map->tab[i][k] == ' ')
+            map->tab[i][k] = '1';
+    }
+    return (0);
+}
+
+int	check_side_ways(t_valid_map *map)
+{
+	int	i;
+	
+	i = 0;
+	while (map->tab && map->tab[i])
+	{
+		if (check_edges(map, i))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_map_bordered(t_valid_map *map)
+{
+	if (check_up_bottom(map, 0))
+		return (ft_putendl_fd(MAP_NOT_ENCLOSED, 2), 1);
+	if (check_up_bottom(map, map->height - 1))
+		return (ft_putendl_fd(MAP_NOT_ENCLOSED, 2), 1);
+	if (check_side_ways(map))
+		return (ft_putendl_fd(MAP_NOT_ENCLOSED,2), 1);
+	return (0);
+}
+
 static int	ft_everything_enclosed(t_valid_map *map)
 {
 	int	i;
@@ -86,6 +150,27 @@ static int	ft_everything_enclosed(t_valid_map *map)
 	return (0);
 }
 
+void	change_space_to_one(t_valid_map *map)
+{
+	size_t	len;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		len = ft_strlen(map->tab[i]) - 1;
+		while (j < len)
+		{
+			if (map->tab[i][j] == ' ')
+				map->tab[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
+
 int	ft_closed_map(t_parse *parse)
 {
 	int			map_len;
@@ -103,7 +188,9 @@ int	ft_closed_map(t_parse *parse)
 		i++;
 	}
 	map.tab[i] = 0;
+	change_space_to_one(&map);
 	if (ft_everything_enclosed(&map))
 		return (1);
+	ft_double_array_printer(map.tab);
 	return (0);
 }
