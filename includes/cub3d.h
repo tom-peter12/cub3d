@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/25 14:07:49 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:03:33 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,52 +55,70 @@ typedef struct s_cmlx
 	int				endian;
 }	t_cmlx;
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}			t_color;
+
 typedef struct s_valid_map
 {
-	char	**tab;
-	size_t	height;
-	size_t	width;
+	char			**tab;
+	// t_color			*c_ceil;
+	// t_color			*c_floor;
+	// char			*no_tex;
+	// char			*so_tex;
+	// char			*we_tex;
+	// char			*ea_tex;
+	size_t			height;
+	size_t			width;
 }			t_valid_map;
 
 typedef struct s_parse
 {
-	char	*line;
-	char	*map_file;
-	int		map_fd;
-	char	**map;
-	char	*ceiling;
-	char	*floor;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		*dup_check;
-	int		map_height;
-	int		map_width;
+	char		*line;
+	char		*map_file;
+	int			map_fd;
+	char		**map;
+	char		*ceiling;
+	char		*floor;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			*dup_check;
+	int			map_height;
+	int			map_width;
+	t_valid_map	holder;
 }			t_parse;
 
 
 
-// typedef struct s_player
-// {
-// 	double	x;
-// 	double	y;
-// 	double	dir;
-// }	t_player;
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dirx;
+	double	diry;
+}	t_player;
 
 // typedef struct s_raytrace
 // {
 // 	int	ray;
 // }	t_raytrace;
 
+typedef struct s_game
+{
+	t_valid_map		map;
+	t_player		player;
+	t_cmlx			cmlx;
+}	t_game;
+
 // init_deinit.c
 int		ft_init_parse(t_parse *parse);
 void	exit_return_freer(t_parse *parse);
 
-typedef struct s_data
-{
-	t_cmlx			*cmlx;
-}	t_data;
 
 // parse_arg
 int		ft_validate_cub(t_parse *parse);
