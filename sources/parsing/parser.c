@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/27 21:06:56 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 17:41:16 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,46 +25,38 @@ int	ft_is_all_digit(char *str)
 	}
 	return (1);
 }
-static int ft_invalid_char(char *str)
+int ft_invalid_char(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str && str[i])
 	{
-		if (!ft_strchr("FC,0123456789 \t\n", str[i]))
+		if (!ft_strchr("0123456789", str[i]))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_color_validate(char *str)
+int	ft_color_validate(char **str)
 {
-	char	**colors;
 	int		i;
+	char	*tmp;
 
-	if (ft_invalid_char(str))
-		return (ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
-	i = 0;
-	colors = ft_msplit(str, " ,\n");
-	if (ft_double_array_len(colors) != 4)
+	i = -1;
+	while (str && str[++i])
 	{
-		ft_double_array_free(colors);
-		return (ft_putendl_fd(COLOR_SHOULD_RGB, 2), 1);
-	}
-	while (colors && colors[++i])
-	{
-		if (!ft_is_all_digit(colors[i]))
+		tmp = ft_strtrim(str[i], " ");
+		if (ft_invalid_char(tmp))
+			return (ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
+		if (ft_atoi(tmp) < 0 || ft_atoi(tmp) > 255)
 		{
-			ft_double_array_free(colors);
-			return (ft_putendl_fd(INVALID_COLOR, 2), 1);
-		}
-		if (ft_atoi(colors[i]) < 0 || ft_atoi(colors[i]) > 255)
-		{
-			ft_double_array_free(colors);
+			ft_double_array_free(str);
+			free(tmp);
 			return (ft_putendl_fd(COLOR_OUT_OF_RANGE, 2), 1);
 		}
+		free(tmp);
 	}
 	return (0);
 }

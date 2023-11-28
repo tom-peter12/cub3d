@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/24 21:19:49 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 14:02:57 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,19 @@
 
 # define COLOR_OUT_OF_RANGE "Error\nColor out of range"
 
-# define MISSING_NO "Error\nMissing NORTH Field"
-
-# define MISSING_SO "Error\nMissing SOUTH Field"
-
-# define MISSING_WE "Error\nMissing WEST Field"
-
-# define MISSING_EA "Error\nMissing EAST Field"
-
 # define MISSING_F "Error\nMissing FLOOR Field"
 
 # define MISSING_C "Error\nMissing CEILING Field"
 
 # define UNKNOWN_IDENTIFIER "Error\nUnknown Identifier"
 
-# define MISSIN_NO_PATH "Error\nMissing Path for NORTH Field"
+# define MISSIN_NO_PATH "Error\nInvalid Or Missing Path for NORTH Field"
 
-# define MISSIN_SO_PATH "Error\nMissing Path for SOUTH Field"
+# define MISSIN_SO_PATH "Error\nInvalid Or Missing Path for SOUTH Field"
 
-# define MISSIN_WE_PATH "Error\nMissing Path for WEST Field"
+# define MISSIN_WE_PATH "Error\nInvalid Or Missing Path for WEST Field"
 
-# define MISSIN_EA_PATH "Error\nMissing Path for EAST Field"
+# define MISSIN_EA_PATH "Error\nInvalid Or Missing Path for EAST Field"
 
 # define MULTIPLE_PLAYER_POS "Error\nMultiple Player Position Found"
 
@@ -66,5 +58,7 @@
 # define COLOR_SHOULD_RGB "Error\nColor should be RGB"
 
 # define MAP_NOT_ENCLOSED "Error\nMap Should be Enclosed"
+
+# define MISSING_TEXTURE_PATH "Error\nMissing Texture Path"
 
 #endif

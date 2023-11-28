@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/24 13:06:27 by tpetros          ###   ########.fr        #
+#    Updated: 2023/11/28 19:56:51 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ OBJ_PATH  = objects
 SRC_DIRS  = parsing raytracing
 SRC       = $(wildcard $(addprefix $(SRC_PATH), $(addsuffix /*.c, $(SRC_DIRS))))
 OBJS      = $(patsubst $(SRC_PATH)%.c,$(OBJ_PATH)/%.o,$(SRC))
+FSANITIZE = -g3 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
 
 CC        = cc
-CFLAGS    = -Wall -Wextra -Werror -g
+CFLAGS    = -Wall -Wextra -Werror
 RM        = rm -rf
 MacLinker = -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink = -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz
@@ -49,7 +50,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	@echo "Compiling mlx"
-	$(MAKE) -C $(MLX) 2> /dev/null
+	# $(MAKE) -C $(MLX) 2> /dev/null
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  $(LINKER)  -o $(NAME)
 
 
@@ -59,13 +60,13 @@ $(OBJ_PATH):
 clean:
 	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
-	@make clean -sC $(MLX)
-	@make clean -sC ./includes/libft
+	# @make clean -sC $(MLX)
+	# @make clean -sC ./includes/libft
 
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	@make fclean -sC ./includes/libft
+	# @make fclean -sC ./includes/libft
 
 re: fclean all
 

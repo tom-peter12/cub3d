@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/27 21:03:33 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 19:40:51 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "mlx/mlx.h"
 # include "err.h"
 
-# define WIN_WIDTH  800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH  1920
+# define WIN_HEIGHT 1080
 
 typedef enum s_map_dir
 {
@@ -62,35 +62,26 @@ typedef struct s_color
 	int	b;
 }			t_color;
 
-typedef struct s_valid_map
+typedef struct s_map
 {
 	char			**tab;
-	// t_color			*c_ceil;
-	// t_color			*c_floor;
-	// char			*no_tex;
-	// char			*so_tex;
-	// char			*we_tex;
-	// char			*ea_tex;
+	t_color			*c_ceil;
+	t_color			*c_floor;
 	size_t			height;
 	size_t			width;
-}			t_valid_map;
+}			t_map;
 
 typedef struct s_parse
 {
 	char		*line;
 	char		*map_file;
 	int			map_fd;
-	char		**map;
-	char		*ceiling;
-	char		*floor;
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
+	char		**map_tmp;
+	char		**textures;
 	int			*dup_check;
 	int			map_height;
 	int			map_width;
-	t_valid_map	holder;
+	t_map		*map;
 }			t_parse;
 
 
@@ -110,7 +101,7 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	t_valid_map		map;
+	t_parse			parse;
 	t_player		player;
 	t_cmlx			cmlx;
 }	t_game;
@@ -126,7 +117,7 @@ int		ft_validate_args(t_parse *parse, int argc, char **argv);
 int		ft_validate_parsed(t_parse *parse);
 
 // parse_fill
-void	ft_fill_map_parser(t_parse *parse, char *str);
+void	ft_fill_map_parser(t_parse *parse);
 int		ft_fill_parser(t_parse *parse);
 
 // parse_utils
@@ -135,12 +126,14 @@ int		ft_check_file(char *path);
 int		ft_isattr_dup(t_parse *parse, int dir);
 
 // parse
-int		ft_color_validate(char *str);
+int		ft_color_validate(char **str);
 void	parser(t_parse *parse, int argc, char **argv);
 
 
 int		ft_closed_map(t_parse *parse);
 
-int		ft_init_valid_map(t_parse *parse, t_valid_map *map, int len);
+int		ft_init_valid_map(t_parse *parse, t_map *map, int len);
+
+int		ft_texture_files(t_parse *parse);
 
 #endif

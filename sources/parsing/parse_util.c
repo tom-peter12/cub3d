@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:40:58 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/13 10:15:29 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 17:37:39 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	ft_is_dir(char *dir)
 		ft_putendl_fd(NOT_FILE, 2);
 		return (close(fd), 1);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 int	ft_check_file(char *path)

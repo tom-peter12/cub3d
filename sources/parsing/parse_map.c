@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/27 21:04:46 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 19:14:20 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ static int	map_end(t_parse *parse)
 	int	i;
 
 	i = 0;
-	while (parse->map && parse->map[i])
+	while (parse->map_tmp && parse->map_tmp[i])
 		i++;
-	while (i > 0 && !white_space(parse->map[i - 1]))
+	while (i > 0 && !white_space(parse->map_tmp[i - 1]))
 		i--;
 	return (i);
 }
 
-static int	ft_not_enclosed(t_valid_map *map, size_t i, size_t j)
+static int	ft_not_enclosed(t_map *map, size_t i, size_t j)
 {
 	ssize_t	down;
 	ssize_t	left;
@@ -75,7 +75,7 @@ static int	ft_not_enclosed(t_valid_map *map, size_t i, size_t j)
 	return (0);
 }
 
-int space_to_one(t_valid_map *map, int i)
+int space_to_one(t_map *map, int i)
 {
 	int len;
 	int j;
@@ -95,7 +95,7 @@ int space_to_one(t_valid_map *map, int i)
 	return (0);
 }
 
-static int	ft_everything_enclosed(t_valid_map *map)
+static int	ft_everything_enclosed(t_map *map)
 {
 	int	i;
 	int	j;
@@ -120,23 +120,22 @@ int	ft_closed_map(t_parse *parse)
 {
 	int			map_len;
 	int			i;
-	t_valid_map	map;
 
 	map_len = map_end(parse);
 	i = 0;
-	ft_init_valid_map(parse, &map, map_len);
+	ft_init_valid_map(parse, parse->map, map_len);
 	while (i < map_len)
 	{
-		if (!white_space(parse->map[i]))
+		if (!white_space(parse->map_tmp[i]))
 			return (ft_putendl_fd(NEW_LINE_IN_MAP, 2), 1);
-		ft_strlcpy(map.tab[i], parse->map[i], ft_strlen(parse->map[i]));
-		if (space_to_one(&map, i))
+		ft_strlcpy(parse->map->tab[i], parse->map_tmp[i], ft_strlen(parse->map_tmp[i]));
+		if (space_to_one(parse->map, i))
 			return (1);
 		i++;
 	}
-	map.tab[i] = 0;
-	if (ft_everything_enclosed(&map))
+	parse->map->tab[i] = 0;
+	if (ft_everything_enclosed(parse->map))
 		return (ft_putendl_fd(MAP_NOT_ENCLOSED,2), 1);
-	ft_double_array_printer(map.tab);
+	ft_double_array_printer(parse->map->tab);
 	return (0);
 }

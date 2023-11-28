@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/27 21:03:21 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:44:26 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,28 @@
 
 int	ft_init_parse(t_parse *parse)
 {
-	parse->no = NULL;
-	parse->so = NULL;
-	parse->we = NULL;
-	parse->ea = NULL;
-	parse->floor = NULL;
-	parse->ceiling = NULL;
-	parse->dup_check = (int *)malloc(7 * sizeof(int));
+	parse->textures = (char **)ft_calloc(5, sizeof(char *));
+	if (!parse->textures)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
+	parse->dup_check = (int *)ft_calloc(7, sizeof(int));
 	if (!parse->dup_check)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
-	ft_bzero(parse->dup_check, 7 * sizeof(int));
 	if (!parse->map_file)
 		parse->map_file = NULL;
 	parse->map_height = 0;
+	parse->map_tmp = NULL;
 	parse->map_width = 0;
+	parse->map = ft_calloc(2, sizeof(t_map));
+	parse->map->c_ceil = ft_calloc(2, sizeof(t_color));
+	parse->map->c_floor = ft_calloc(2, sizeof(t_color));
 	return (0);
 }
 void	exit_return_freer(t_parse *parse)
 {
-	if (parse->no)
-		free(parse->no);
-	if (parse->so)
-		free(parse->so);
-	if (parse->we)
-		free(parse->we);
-	if (parse->ea)
-		free(parse->ea);
-	if (parse->floor)
-		free(parse->floor);
-	if (parse->ceiling)
-		free(parse->ceiling);
-	if (parse->map)
-		ft_double_array_free(parse->map);
+	if (parse->textures)
+		ft_double_array_free(parse->textures);
+	if (parse->map_tmp)
+		ft_double_array_free(parse->map_tmp);
 	if (parse->dup_check)
 		free(parse->dup_check);
 	if (parse->map_fd)
@@ -53,7 +43,7 @@ void	exit_return_freer(t_parse *parse)
 	exit(1);
 }
 
-int	ft_init_valid_map(t_parse *parse, t_valid_map *map, int len)
+int	ft_init_valid_map(t_parse *parse, t_map *map, int len)
 {
 	size_t	i;
 
@@ -65,17 +55,10 @@ int	ft_init_valid_map(t_parse *parse, t_valid_map *map, int len)
 	map->height = len;
 	while (i < map->height)
 	{
-		map->tab[i] = ft_calloc(sizeof(char), map->width);
+		map->tab[i] = ft_calloc(sizeof(char), map->width + 1);
 		if (!map->tab[i])
 			return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 		i++;
 	}
-	// printf("we are comign herer\n");
-	// map->c_ceil = NULL;
-	// map->c_floor = NULL;
-	// map->no_tex = NULL;
-	// map->so_tex = NULL;
-	// map->we_tex = NULL;
-	// map->ea_tex = NULL;
 	return (0);
 }
