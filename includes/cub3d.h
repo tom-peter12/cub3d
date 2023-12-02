@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/28 19:40:51 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/02 18:21:51 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,43 @@
 
 # define WIN_WIDTH  1920
 # define WIN_HEIGHT 1080
+# define FOV 60
+# define CUBE_SIZE 64.00
+# define PI 3.141592653589
+# define MOVE_SPEED 10
+# define ROT_SPEED 0.3
 
-typedef enum s_map_dir
+# define A 		0
+# define S 		1
+# define D 		2
+# define W		13
+# define LEFT	123
+# define RIGHT	124
+# define DOWN	125
+# define UP 	126
+# define ESC	53
+
+typedef enum s_dir
 {
 	NO = 0,
 	SO,
 	WE,
-	EA,
-	F,
-	C
-}	t_map_dir;
+	EA
+}	t_dir;
 
-typedef enum s_start_pos
+typedef struct s_vector
 {
-	N = 0,
-	S,
-	W,
-	E
-}	t_start_pos;
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef struct s_image
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		endian;
+}	t_image;
 
 typedef struct s_cmlx
 {
@@ -84,26 +103,38 @@ typedef struct s_parse
 	t_map		*map;
 }			t_parse;
 
-
-
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	dirx;
-	double	diry;
+	t_vector pos;
+	t_vector dir;
 }	t_player;
 
-// typedef struct s_raytrace
-// {
-// 	int	ray;
-// }	t_raytrace;
+
+typedef struct s_key
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+	int		up;
+	int		down;
+}	t_key;
+
+typedef struct s_ray
+{
+	double		view;
+	t_vector	ray;
+}	t_ray;
 
 typedef struct s_game
 {
 	t_parse			parse;
 	t_player		player;
 	t_cmlx			cmlx;
+	t_key			key;
+	t_ray			ray;
 }	t_game;
 
 // init_deinit.c
