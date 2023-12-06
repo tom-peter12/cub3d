@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/02 18:21:51 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/06 13:39:53 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@
 # include <math.h>
 # include <stdlib.h>
 
+
+# if __APPLE__
+	# include "mlx/mlx.h"
+# elif __linux__
+	# include "mlx_linux/mlx.h"
+# endif
 # include "libft/includes/libft.h"
-# include "mlx_linux/mlx.h"
-# include "mlx/mlx.h"
 # include "err.h"
 
 # define WIN_WIDTH  1920
 # define WIN_HEIGHT 1080
-# define FOV 60
+# define FOV 66.00
 # define CUBE_SIZE 64.00
 # define PI 3.141592653589
 # define MOVE_SPEED 10
@@ -41,6 +45,13 @@
 # define UP 	126
 # define ESC	53
 
+# define BLUE  0x0000FF
+# define RED   0xFF0000
+# define GREEN 0x00FF00
+# define WHITE 0xFFFFFF
+# define BLACK 0x000000
+
+
 typedef enum s_dir
 {
 	NO = 0,
@@ -48,31 +59,6 @@ typedef enum s_dir
 	WE,
 	EA
 }	t_dir;
-
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-}	t_vector;
-
-typedef struct s_image
-{
-	void	*img;
-	int		*addr;
-	int		bpp;
-	int		endian;
-}	t_image;
-
-typedef struct s_cmlx
-{
-	void			*ptr;
-	void			*mlx_win;
-	void			*img;
-	int				*addr;
-	int				bpp;
-	int				line_length;
-	int				endian;
-}	t_cmlx;
 
 typedef struct s_color
 {
@@ -103,12 +89,29 @@ typedef struct s_parse
 	t_map		*map;
 }			t_parse;
 
-typedef struct s_player
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef struct s_cmlx
+{
+	void			*ptr;
+	void			*mlx_win;
+	void			*img;
+	int				*addr;
+	int				bpp;
+	int				line_length;
+	int				endian;
+}	t_cmlx;
+
+typedef struct s_fps
 {
 	t_vector pos;
 	t_vector dir;
-}	t_player;
-
+	t_vector plane;
+}	t_fps;
 
 typedef struct s_key
 {
@@ -122,16 +125,32 @@ typedef struct s_key
 	int		down;
 }	t_key;
 
+typedef struct t_dda
+{
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	t_vector	map;
+	t_vector	step;
+	double		wall_dist;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}	t_dda;
+
 typedef struct s_ray
 {
-	double		view;
-	t_vector	ray;
+	double		mnchi;
+	t_vector	ray_vec;
+	t_dda		dda;
 }	t_ray;
+
 
 typedef struct s_game
 {
 	t_parse			parse;
-	t_player		player;
+	t_fps			fps;
 	t_cmlx			cmlx;
 	t_key			key;
 	t_ray			ray;
