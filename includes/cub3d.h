@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/06 13:39:53 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:46:59 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define PI 3.141592653589
 # define MOVE_SPEED 10
 # define ROT_SPEED 0.3
+// # define UNIT_VECTOR (i, j) (i / sqrt(i * i + j * j), j / sqrt(i * i + j * j))
 
 # define A 		0
 # define S 		1

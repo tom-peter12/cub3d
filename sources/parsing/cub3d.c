@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/06 18:34:31 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/07 20:00:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,10 @@ void	pre_dda(t_game *game)
 	game->ray.dda.map.x = (int)game->fps.pos.x;
 	game->ray.dda.map.y = (int)game->fps.pos.y;
 	game->ray.dda.delta_dist.x = 1e30;
-	if (game->ray.dda.delta_dist.x != 0)
+	if (game->ray.ray_vec.x != 0)
 		game->ray.dda.delta_dist.x = fabs(1.0 / game->ray.ray_vec.x);
 	game->ray.dda.delta_dist.y = 1e30;
-	if (game->ray.dda.delta_dist.y != 0)
+	if (game->ray.ray_vec.y != 0)
 		game->ray.dda.delta_dist.y = fabs(1.0 / game->ray.ray_vec.y);
 	game->ray.dda.hit = 0;
 	if (game->ray.ray_vec.x < 0)
@@ -195,16 +195,16 @@ void dda(t_game *game) {
 		{
             game->ray.dda.side_dist.x += game->ray.dda.delta_dist.x;
             game->ray.dda.map.x += game->ray.dda.step.x;
-            game->ray.dda.hit = (game->parse.map->tab[(int)game->ray.dda.map.y][(int)game->ray.dda.map.x] == '1') ? 1 : 0;
-			// game->ray.dda.side = 0;
+			game->ray.dda.side = 0;
         }
 		else
 		{
             game->ray.dda.side_dist.y += game->ray.dda.delta_dist.y;
             game->ray.dda.map.y += game->ray.dda.step.y;
-            game->ray.dda.hit = (game->parse.map->tab[(int)game->ray.dda.map.y][(int)game->ray.dda.map.x] == '1') ? 1 : 0;
-			// game->ray.dda.side = 1;
+			game->ray.dda.side = 1;
         }
+		if (game->parse.map->tab[(int)game->ray.dda.map.y][(int)game->ray.dda.map.x] == '1')
+			game->ray.dda.hit = 1;
     }
 }
 
@@ -221,7 +221,7 @@ void	draw_stripe(t_game *game, int i)
 	j = 0;
 	while (j < game->ray.dda.draw_start)
 	{
-		game->cmlx.addr[j * WIN_WIDTH + i] = create_rgb(game->parse.map->c_floor);
+		game->cmlx.addr[j * WIN_WIDTH + i] = create_rgb(game->parse.map->c_ceil);
 		j++;
 	}
 	while (j < game->ray.dda.draw_end)
@@ -274,8 +274,8 @@ void	ray_vector_dir(t_game *game)
 {
 	game->ray.ray_vec.x = game->fps.dir.x + game->fps.plane.x * game->ray.mnchi;
 	game->ray.ray_vec.y = game->fps.dir.y + game->fps.plane.y * game->ray.mnchi;
-	game->fps.plane.x = -game->fps.dir.y;
-	game->fps.plane.y = game->fps.dir.x;
+	game->fps.plane.x = -game->fps.dir.y * 0.66;
+	game->fps.plane.y = game->fps.dir.x * 0.66;
 	// printf("*****************************************************\n");
 	// printf("ray->camera %f\n", game->ray.mnchi);
 	// printf("plane x: %f, plane y: %f\n", game->fps.plane.x, game->fps.plane.y);
@@ -297,6 +297,38 @@ void	prepare_raycasting(t_game *game, int i)
 	// printf("=====================================================\n");
 }
 
+// void	da_movement_thang(t_game *game)
+// {
+// 	if (game->key.w == 1)
+// 	{
+// 		if (game->parse.map->tab[(int)(game->fps.pos.y + game->fps.dir.y * 0.1)][(int)game->fps.pos.x] != '1')
+// 			game->fps.pos.y += game->fps.dir.y * 0.1;
+// 		if (game->parse.map->tab[(int)game->fps.pos.y][(int)(game->fps.pos.x + game->fps.dir.x * 0.1)] != '1')
+// 			game->fps.pos.x += game->fps.dir.x * 0.1;
+// 	}
+// 	if (game->key.s == 1)
+// 	{
+// 		if (game->parse.map->tab[(int)(game->fps.pos.y - game->fps.dir.y * 0.1)][(int)game->fps.pos.x] != '1')
+// 			game->fps.pos.y -= game->fps.dir.y * 0.1;
+// 		if (game->parse.map->tab[(int)game->fps.pos.y][(int)(game->fps.pos.x - game->fps.dir.x * 0.1)] != '1')
+// 			game->fps.pos.x -= game->fps.dir.x * 0.1;
+// 	}
+// 	if (game->key.a == 1)
+// 	{
+// 		if (game->parse.map->tab[(int)(game->fps.pos.y - game->fps.plane.y * 0.1)][(int)game->fps.pos.x] != '1')
+// 			game->fps.pos.y -= game->fps.plane.y * 0.1;
+// 		if (game->parse.map->tab[(int)game->fps.pos.y][(int)(game->fps.pos.x - game->fps.plane.x * 0.1)] != '1')
+// 			game->fps.pos.x -= game->fps.plane.x * 0.1;
+// 	}
+// 	if (game->key.d == 1)
+// 	{
+// 		if (game->parse.map->tab[(int)(game->fps.pos.y + game->fps.plane.y * 0.1)][(int)game->fps.pos.x] != '1')
+// 			game->fps.pos.y += game->fps.plane.y * 0.1;
+// 		if (game->parse.map->tab[(int)game->fps.pos.y][(int)(game->fps.pos.x + game->fps.plane.x * 0.1)] != '1')
+// 			game->fps.pos.x += game->fps.plane.x * 0.1;
+// 	}
+// }
+
 int	kaboom(void *param)
 {
 	t_game	*game;
@@ -304,6 +336,7 @@ int	kaboom(void *param)
 
 	game = (t_game *)param;
 	i = 0;
+	// da_movement_thang(game);
 	while (i < WIN_WIDTH)
 	{
 		prepare_raycasting(game, i);
