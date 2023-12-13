@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:09:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 15:56:20 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:07:19 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,17 @@ void	draw_stripe(t_game *game, int i)
 	{
 		if (game->ray.dda.side == 0)
 		{
-			if (game->ray.dda.step.x == -1)
+			if (game->ray.ray_vec.x < 0)
 				game->cmlx.addr[j * WIN_WIDTH + i] = WHITE;
+			else if (game->ray.ray_vec.x > 0)
+				game->cmlx.addr[j * WIN_WIDTH + i] = BLUE;
 		}
 		else
 		{
-			if (game->ray.dda.step.y == -1)
+			if (game->ray.ray_vec.y < 0)
 				game->cmlx.addr[j * WIN_WIDTH + i] = RED;
-			else if (game->ray.dda.step.y == 1)
+			else if (game->ray.ray_vec.y > 0)
 				game->cmlx.addr[j * WIN_WIDTH + i] = BLACK;
-			else if (game->ray.dda.step.x == -1)
-				game->cmlx.addr[j * WIN_WIDTH + i] = BLUE;
-			else
-				game->cmlx.addr[j * WIN_WIDTH + i] = WHITE;
 		}
 		j++;
 	}
