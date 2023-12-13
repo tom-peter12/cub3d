@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/12 19:02:58 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/13 23:09:42 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	@echo "Compiling mlx"
-	# $(MAKE) -C $(MLX) 2> /dev/null
+	$(MAKE) -C $(MLX) 2> /dev/null
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  $(LINKER)  -o $(NAME)
 
 

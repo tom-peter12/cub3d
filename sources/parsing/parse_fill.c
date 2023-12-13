@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/28 18:52:24 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 23:09:24 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,8 @@ void	ft_map_dimension(t_parse *parse)
 	int		start_counting;
 	int		len;
 
-	(0 || (start_counting = 0) || (len = 0));
+	start_counting = 0;
+	len = 0;
 	while (parse->line)
 	{
 		tmp = ft_split(parse->line, ' ');
