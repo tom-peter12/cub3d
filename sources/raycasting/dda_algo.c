@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:01:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 16:55:10 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:02:40 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void	calculate_draw_start_end(t_game *game)
 void	calculate_line_height(t_game *game)
 {
 	if (game->ray.dda.side == 0)
-		game->ray.dda.wall_dist = (game->ray.dda.side_dst.x - game->ray.dda.delta_dist.x);
+		game->ray.dda.wall_dist = (game->ray.dda.side_dst.x
+				- game->ray.dda.delta_dist.x);
 	else if (game->ray.dda.side == 1)
-		game->ray.dda.wall_dist = (game->ray.dda.side_dst.y - game->ray.dda.delta_dist.y);
+		game->ray.dda.wall_dist = (game->ray.dda.side_dst.y
+				- game->ray.dda.delta_dist.y);
 	game->ray.dda.line_height = (int)(WIN_HEIGHT / game->ray.dda.wall_dist);
 }
 

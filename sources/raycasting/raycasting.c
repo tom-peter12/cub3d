@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:12:41 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 16:02:19 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:05:48 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	ray_vector_dir(t_game *game)
 {
-	game->ray.ray_vec.x = game->fps.dir.x + game->fps.plane.x * game->ray.camerax;
-	game->ray.ray_vec.y = game->fps.dir.y + game->fps.plane.y * game->ray.camerax;
+	game->ray.ray_vec.x = game->fps.dir.x + game->fps.plane.x \
+		* game->ray.camerax;
+	game->ray.ray_vec.y = game->fps.dir.y + game->fps.plane.y \
+		* game->ray.camerax;
 }
 
 void	raycasting(t_game *game, int i)

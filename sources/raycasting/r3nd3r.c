@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:09:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 19:07:19 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:05:22 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	draw_ceiling(t_game *game, int i, int *j)
 	}
 }
 
-static void draw_floor(t_game *game, int i, int *j)
+static void	draw_floor(t_game *game, int i, int *j)
 {
 	while (*j < WIN_HEIGHT)
 	{
