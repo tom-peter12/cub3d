@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:24:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/12 19:25:53 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:59:12 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_key
 
 typedef struct t_dda
 {
-	t_vector	side_dist;
+	t_vector	side_dst;
 	t_vector	delta_dist;
 	t_vector	map;
 	t_vector	step;
@@ -96,7 +96,7 @@ typedef struct t_dda
 
 typedef struct s_ray
 {
-	double		mnchi;
+	double		camerax;
 	t_vector	ray_vec;
 	t_dda		dda;
 }	t_ray;

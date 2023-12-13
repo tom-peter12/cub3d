@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/12 19:36:10 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:00:45 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,5 @@ int	init_game(t_game *game)
 	if (init_keys(game))
 		return (1);
 	ft_locate_player(game);
-	printf("************************\n");
-	printf("Player's location: [%f, %f]\n", game->fps.pos.x, game->fps.pos.y);
-	printf("************************\n");
 	return (0);
 }

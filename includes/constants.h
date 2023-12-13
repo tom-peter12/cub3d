@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:23:43 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/12 19:24:38 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:28:30 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define FOV 66.00
 # define CUBE_SIZE 64.00
 # define PI 3.141592653589
-# define MOVE_SPEED 10
+# define MOVE_SPEED 0.1
 # define ROT_SPEED 0.1
 
 # define A 		0
