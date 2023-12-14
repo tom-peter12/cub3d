@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 13:00:45 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:01:08 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ int	init_keys(t_game *game)
 	return (0);
 }
 
+void	init_textures(t_game *game)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		game->texture[i].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
+			game->parse.textures[i], &game->texture[i].width, \
+			&game->texture[i].width);
+		if (game->texture[i].img == NULL)
+			close_window(game);
+		i++;
+	}
+}
+
 int	init_game(t_game *game)
 {
 	if (init_mlx(game))
@@ -45,5 +61,6 @@ int	init_game(t_game *game)
 	if (init_keys(game))
 		return (1);
 	ft_locate_player(game);
+	init_textures(game);
 	return (0);
 }

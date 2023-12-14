@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 23:09:24 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:09:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,13 @@ void	check_and_save_path(t_parse *parse, char **str)
 	if (ft_check_file(stripped))
 		exit_return_freer(parse);
 	if (ft_strcmp(str[0], "NO") == 0)
-		parse->textures[NO] = ft_strdup(str[1]);
+		parse->textures[NO] = ft_strdup(stripped);
 	else if (ft_strcmp(str[0], "SO") == 0)
-		parse->textures[SO] = ft_strdup(str[1]);
+		parse->textures[SO] = ft_strdup(stripped);
 	else if (ft_strcmp(str[0], "WE") == 0)
-		parse->textures[WE] = ft_strdup(str[1]);
+		parse->textures[WE] = ft_strdup(stripped);
 	else if (ft_strcmp(str[0], "EA") == 0)
-		parse->textures[EA] = ft_strdup(str[1]);
+		parse->textures[EA] = ft_strdup(stripped);
 }
 
 void	ft_texture_filler(t_parse *parse, char **tmp)
