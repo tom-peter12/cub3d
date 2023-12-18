@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/28 18:44:26 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/18 21:24:29 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ int	ft_init_parse(t_parse *parse)
 		parse->map_file = NULL;
 	parse->map_height = 0;
 	parse->map_tmp = NULL;
+	parse->line = NULL;
 	parse->map_width = 0;
 	parse->map = ft_calloc(2, sizeof(t_map));
+	if (!parse->map)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map->c_ceil = ft_calloc(2, sizeof(t_color));
+	if (!parse->map->c_ceil)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map->c_floor = ft_calloc(2, sizeof(t_color));
+	if (!parse->map->c_floor)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	return (0);
 }
 void	exit_return_freer(t_parse *parse)
@@ -40,6 +47,18 @@ void	exit_return_freer(t_parse *parse)
 		free(parse->dup_check);
 	if (parse->map_fd)
 		close(parse->map_fd);
+	if (parse->map)
+	{
+		if (parse->map->c_ceil)
+			free(parse->map->c_ceil);
+		if (parse->map->c_floor)
+			free(parse->map->c_floor);
+		if (parse->map->tab)
+			ft_double_array_free(parse->map->tab);
+		free(parse->map);
+	}
+	if (parse->line)
+		free(parse->line);
 	exit(1);
 }
 

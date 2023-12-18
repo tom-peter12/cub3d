@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:34:53 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 23:21:11 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:52:14 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int	key_press(int keycode, t_game *game)
 int	key_release(int keycode, t_game *game)
 {
 	if (keycode == W)
-		game->key.w = -1;
+		game->key.w = 0;
 	if (keycode == A)
-		game->key.a = -1;
+		game->key.a = 0;
 	if (keycode == S)
-		game->key.s = -1;
+		game->key.s = 0;
 	if (keycode == D)
-		game->key.d = -1;
+		game->key.d = 0;
 	if (keycode == LEFT)
-		game->key.left = -1;
+		game->key.left = 0;
 	if (keycode == RIGHT)
-		game->key.right = -1;
+		game->key.right = 0;
 	return (0);
 }
 

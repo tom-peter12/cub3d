@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/28 14:02:57 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:20:13 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define MAP_NOT_LAST "Error\nMap Not Last"
 
 # define EMPTY_MAP "Error\nEmpty Map"
+
+# define EMPTY_FILE "Error\nEmpty File"
 
 # define INVALID_COLOR "Error\nColor must be digits"
 

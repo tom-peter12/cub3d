@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/12 19:26:13 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:00:22 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		ft_texture_files(t_parse *parse);
 
 // raycasting.c
 int		kaboom(void *param);
-void	raycasting(t_game *game, int i);
+void	raycast(t_game *game, int i);
 void	ray_vector_dir(t_game *game);
 
 // movement.c
@@ -88,7 +88,7 @@ void	calculate_draw_start_end(t_game *game);
 void	draw_stripe(t_game *game, int i);
 
 // init.c
-int		init_keys(t_game *game);
+void	init_keys(t_game *game);
 int		init_game(t_game *game);
 int		init_mlx(t_game *game);
 
@@ -103,4 +103,21 @@ int		key_release(int keycode, t_game *game);
 int		clr_rgb(t_color *color);
 int		close_window(t_game *game);
 
+
+/**
+ * 		Texture Mapping files
+ *  r3nd3r_t3xtur3.c
+ *  r3nd3r.c
+ * 
+*/
+
+// r3nd3r_t3xtur3.c
+void	texture_rendering(t_game *game, int i);
+void	texture_mapping(t_game *game);
+void	texture_addr(t_game *game);
+void	tex_which_side(t_game *game);
+
+// r3nd3r.c
+void	render(t_game *game, int i);
+void	render_ceiling_floor(t_game *game, int i);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:23:43 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 23:20:54 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/18 21:14:55 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 # define WIN_WIDTH  1920
 # define WIN_HEIGHT 1080
-# define FOV 66.00
-# define CUBE_SIZE 64.00
-# define PI 3.141592653589
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.1
+# define MOVE_WEIGHT 0.07
+# define ROT_WEIGHT 0.04
 
+# if __APPLE__
 # define A 		0
 # define S 		1
 # define D 		2
@@ -29,18 +27,15 @@
 # define RIGHT	124
 # define ESC	53
 
-# define BLUE  0x0000FF
-# define RED   0xFF0000
-# define GREEN 0x00FF00
-# define WHITE 0xFFFFFF
-# define BLACK 0x000000
+# elif __linux__
+# define A 		97
+# define S		115
+# define D		100
+# define W		119
+# define LEFT	65361
+# define RIGHT	65363
+# define ESC	65307
+# endif
 
-typedef enum s_dir
-{
-	NO = 0,
-	SO,
-	WE,
-	EA
-}	t_dir;
 
 #endif

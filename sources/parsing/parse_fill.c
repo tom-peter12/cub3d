@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/14 16:09:49 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:06:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,10 @@ int	ft_fill_attributes(t_parse *parse)
 			|| ft_strcmp(stripped, "WE") == 0 || ft_strcmp(stripped, "EA") == 0)
 				ft_texture_filler(parse, tmp);			
 		else if (ft_strcmp(stripped, "C") == 0 || ft_strcmp(stripped, "F") == 0)
-			ft_ceiling_floor(parse, stripped);
+		{
+			if (ft_ceiling_floor(parse, stripped))
+				return (1);
+		}
 		else if (stripped[0] != ' ' && stripped[0] != '\n' && stripped[0] != '\0')
 		{
 			free(stripped);
@@ -198,7 +201,7 @@ int	ft_fill_parser(t_parse *parse)
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
-		return (ft_putendl_fd("Error\nEmpty File", 2), 1);
+		return (ft_putendl_fd(EMPTY_FILE, 2), 1);
 	ft_map_dimension(parse);
 	if (parse->map_height == 0)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);

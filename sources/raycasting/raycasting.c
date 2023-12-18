@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:12:41 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/13 20:05:48 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:58:03 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ray_vector_dir(t_game *game)
 		* game->ray.camerax;
 }
 
-void	raycasting(t_game *game, int i)
+void	raycast(t_game *game, int i)
 {
 	game->ray.camerax = 2 * (double)i / WIN_WIDTH - 1;
 	ray_vector_dir(game);
@@ -39,8 +39,8 @@ int	kaboom(void *param)
 	da_movement_thang(game);
 	while (i < WIN_WIDTH)
 	{
-		raycasting(game, i);
-		draw_stripe(game, i);
+		raycast(game, i);
+		render(game, i);
 		i++;
 	}
 	mlx_put_image_to_window(game->cmlx.ptr, game->cmlx.mlx_win,
