@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 00:06:11 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/02 22:20:03 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:18:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 //  1 2 3 4 5 6 7
 
-void ft_btree_apply_infix(t_btree *root, void (*applyf)(void *))
+void	ft_btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-    if (!root || applyf == NULL)
+	if (!root || applyf == NULL)
 		return ;
 	ft_btree_apply_infix(root->left, applyf);
 	applyf(root->item);

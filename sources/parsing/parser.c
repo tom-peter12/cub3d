@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 17:21:53 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 21:42:47 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	ft_is_all_digit(char *str)
 	}
 	return (1);
 }
-int ft_invalid_char(char *str)
+
+int	ft_invalid_char(char *str)
 {
 	int	i;
 
@@ -49,10 +50,9 @@ int	ft_color_validate(char **str)
 	{
 		tmp = ft_strtrim(str[i], " ");
 		if (ft_invalid_char(tmp))
-			return (ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
+			return (free(tmp), ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
 		if (ft_atoi(tmp) < 0 || ft_atoi(tmp) > 255)
 		{
-			ft_double_array_free(str);
 			free(tmp);
 			return (ft_putendl_fd(COLOR_OUT_OF_RANGE, 2), 1);
 		}
@@ -61,14 +61,31 @@ int	ft_color_validate(char **str)
 	return (0);
 }
 
+int	ft_check_attributes(t_parse *parse)
+{
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		printf("%d\n", parse->dup_check[i]);
+		if (!parse->dup_check[i])
+			return (ft_putendl_fd("Error\nMissing Attribute", 2), 1);
+		i++;
+	}
+	return (0);
+}
+
 void	parser(t_parse *parse, int argc, char **argv)
 {
 	if (ft_init_parse(parse))
-		exit_return_freer(parse);
+		exit_return_freer(parse, 1);
 	if (ft_validate_args(parse, argc, argv))
-		exit_return_freer(parse);
+		exit_return_freer(parse, 1);
 	if (ft_fill_parser(parse))
-		exit_return_freer(parse);
+		exit_return_freer(parse, 1);
 	if (ft_validate_parsed(parse))
-		exit_return_freer(parse);
+		exit_return_freer(parse, 1);
+	// if (ft_check_attributes(parse))
+	// 	exit_return_freer(parse, 1);
 }

@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/18 21:55:34 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/19 21:30:04 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJ_PATH  	= objects
 SRC_DIRS  	= parsing raycasting
 SRC_PARSE 	= parse_arg \
 				parse_fill \
+				parse_fill_2 \
 				parse_init_deinit \
 				parse_map \
 				parse_util \

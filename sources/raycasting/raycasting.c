@@ -12,6 +12,19 @@
 
 #include "../../includes/cub3d.h"
 
+/**
+ * @brief Calculates the direction of the ray vector based on the player's 
+ * 		  direction and camera position.
+ * 
+ * The ray vector is calculated using the following formula:
+ * 
+ * rayDir = dir + plane * camera
+ * 
+ * @param game A pointer to the game structure.
+ * 
+ * @return void
+ */
+
 void	ray_vector_dir(t_game *game)
 {
 	game->ray.ray_vec.x = game->fps.dir.x + game->fps.plane.x \
@@ -19,6 +32,19 @@ void	ray_vector_dir(t_game *game)
 	game->ray.ray_vec.y = game->fps.dir.y + game->fps.plane.y \
 		* game->ray.camerax;
 }
+
+/**
+ * @brief Performs raycasting for a specific column of the screen.
+ * 
+ * This function calculates the camera position, direction of the ray vector,
+ * performs the DDA algorithm, and calculates the line height and draw start/end
+ * positions for the column.
+ * 
+ * @param game 	A pointer to the game structure.
+ * @param i 	The column index.
+ * 
+ * @return { void }
+ */
 
 void	raycast(t_game *game, int i)
 {

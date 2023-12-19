@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:34:53 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 15:52:14 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:24:55 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	close_window(t_game *game)
 		mlx_destroy_window(game->cmlx.ptr, game->cmlx.mlx_win);
 	if (game->cmlx.ptr || game->cmlx.img)
 		mlx_destroy_image(game->cmlx.ptr, game->cmlx.img);
-	exit_return_freer(&game->parse);
+	exit_return_freer(&game->parse, 0);
 	return (0);
 }

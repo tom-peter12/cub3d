@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 16:28:08 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:06:56 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,11 @@ int	init_mlx(t_game *game)
  *
  * 
  * @brief
- * As the name suggests, we set the key corresponding values to 0. This will ensure
- * that our game starts without any key pressed. If this step is not done, the game
- * will act weirdly, start with the fps moving and eventually seg faulting.
+ * As the name suggests, we set the key corresponding values to 0. This will
+ * ensure that our game starts without any key pressed. If this step is not 
+ * done, the game will act weirdly, start with the fps moving and eventually
+ * seg faulting.
  * 
- * Suggestion: should make the function return type void since there is absolutely no
- * reason this function could fail.
- * 
- * Suggestion resolved.
  * 
  * @return {void}
  * 
@@ -96,7 +93,6 @@ void	init_keys(t_game *game)
 	game->key.down = 0;
 	game->key.up = 0;
 }
-
 
 /**
  * Initializes the textures for the game.
@@ -118,9 +114,9 @@ void	init_keys(t_game *game)
  * @return {void}
  */
 
-void init_textures(t_game *game)
+void	init_textures(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -133,7 +129,6 @@ void init_textures(t_game *game)
 		i++;
 	}
 }
-
 
 int	init_game(t_game *game)
 {

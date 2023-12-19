@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 21:24:29 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:26:26 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	ft_init_parse(t_parse *parse)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	return (0);
 }
-void	exit_return_freer(t_parse *parse)
+
+void	exit_return_freer(t_parse *parse, int flag)
 {
 	if (parse->textures)
 		ft_double_array_free(parse->textures);
@@ -59,7 +60,7 @@ void	exit_return_freer(t_parse *parse)
 	}
 	if (parse->line)
 		free(parse->line);
-	exit(1);
+	exit(flag);
 }
 
 int	ft_init_valid_map(t_parse *parse, t_map *map, int len)

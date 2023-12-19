@@ -6,11 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:00:40 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/18 20:40:28 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:08:22 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/libft.h"
+#include "../includes/libft.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

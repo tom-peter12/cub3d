@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:41:38 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/21 11:02:30 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:11:16 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdbool.h>
 # include "../get_next_line/get_next_line.h"
 
-typedef struct s_list t_list;
-typedef struct s_btree t_btree;
+typedef struct s_list	t_list;
+typedef struct s_btree	t_btree;
 
 typedef struct s_list
 {
@@ -98,10 +98,12 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 t_btree		*ft_btree_create_node(void *item);
 void		ft_btree_apply_prefix(t_btree *root, void (*applyf)(void *));
-void 		ft_btree_apply_infix(t_btree *root, void (*applyf)(void *));
+void		ft_btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void		ft_btree_apply_suffix(t_btree *root, void (*applyf)(void *));
-void 		ft_btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *));
-void 		*ft_btree_search_item(t_btree *root, void *data_ref, int (*cmpf)(void *, void *));
+void		ft_btree_insert_data(t_btree **root, void *item, \
+			int (*cmpf)(void *, void *));
+void		*ft_btree_search_item(t_btree *root, void *data_ref, \
+			int (*cmpf)(void *, void *));
 int			ft_btree_level_count(t_btree *root);
 
 // ft_math
@@ -118,6 +120,5 @@ int			ft_ultimate_range(int **range, int min, int max);
 void		ft_swap(int *a, int *b);
 int			ft_iterative_factorial(int nb);
 int			ft_iterative_power(int nb, int power);
-
 
 #endif

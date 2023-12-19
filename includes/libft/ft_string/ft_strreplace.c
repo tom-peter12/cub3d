@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:59:16 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/24 18:08:13 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:09:11 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strreplace(char **pold, const char *new)
 {
 	if (!pold)
-		return NULL;
+		return (NULL);
 	if (*pold)
 		free(*pold);
 	if (new)
@@ -24,4 +24,3 @@ char	*ft_strreplace(char **pold, const char *new)
 		*pold = NULL;
 	return (*pold);
 }
-

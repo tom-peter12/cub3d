@@ -6,12 +6,11 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 23:41:53 by tpetros           #+#    #+#             */
-/*   Updated: 2023/10/02 22:20:40 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:17:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
 /*    A
      / \
@@ -19,7 +18,6 @@
    / \
   D   E
 */
-
 
 // A B D E C
 

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 20:49:37 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:20:30 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	follow_mouse(int x, int y, t_game *game)
 {
-	if (game->mouse.x > x && !game->key.left  && !game->key.right)
+	if (game->mouse.x > x && !game->key.left && !game->key.right)
 	{
 		game->fps.dir.x = game->fps.dir.x * cos(-ROT_WEIGHT)
 			- game->fps.dir.y * sin(-ROT_WEIGHT);
@@ -25,7 +25,7 @@ int	follow_mouse(int x, int y, t_game *game)
 		game->fps.plane.y = game->fps.old_plane_x * sin(-ROT_WEIGHT)
 			+ game->fps.plane.y * cos(-ROT_WEIGHT);
 	}
-	else if (game->mouse.x < x && !game->key.left  && !game->key.right)
+	else if (game->mouse.x < x && !game->key.left && !game->key.right)
 	{
 		game->fps.dir.x = game->fps.dir.x * cos(ROT_WEIGHT)
 			- game->fps.dir.y * sin(ROT_WEIGHT);

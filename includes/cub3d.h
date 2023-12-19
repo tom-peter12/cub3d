@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/18 16:00:22 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:38:29 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,37 @@
 # include "constants.h"
 # include "structs.h"
 
-
 // init_deinit.c
 int		ft_init_parse(t_parse *parse);
-void	exit_return_freer(t_parse *parse);
+void	exit_return_freer(t_parse *parse, int flag);
 
 // parse_arg
 int		ft_validate_cub(t_parse *parse);
 int		ft_validate_args(t_parse *parse, int argc, char **argv);
 int		ft_validate_parsed(t_parse *parse);
 
-// parse_fill
-void	ft_fill_map_parser(t_parse *parse);
+// parse_fill.c
+void	ft_map_dimension(t_parse *parse);
+int		ft_fill_attributes(t_parse *parse);
+void	ft_texture_filler(t_parse *parse, char **tmp, char *strpd);
+void	check_and_save_path(t_parse *parse, char **str);
 int		ft_fill_parser(t_parse *parse);
 
-// parse_utils
+// parse_fill_2.c
+void	ft_fill_map_parser(t_parse *parse);
+int		is_defo_map_line(char *str);
+int		ft_comma_check(char *str);
+void	color_fill(t_parse *parse, char **color, char *c_f);
+int		ft_ceiling_floor(t_parse *parse, char *c_f);
+
+// parse_utils.c
 int		ft_is_dir(char *dir);
 int		ft_check_file(char *path);
 int		ft_isattr_dup(t_parse *parse, int dir);
+int		white_space(char *str);
+
+int		ft_check_up_down(t_map *map, size_t j,
+			ssize_t *down, ssize_t *up);
 
 // parse
 int		ft_color_validate(char **str);
@@ -102,7 +115,6 @@ int		key_press(int keycode, t_game *game);
 int		key_release(int keycode, t_game *game);
 int		clr_rgb(t_color *color);
 int		close_window(t_game *game);
-
 
 /**
  * 		Texture Mapping files
