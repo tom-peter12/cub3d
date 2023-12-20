@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 21:38:37 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:45:51 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static int	ft_not_enclosed(t_map *map, size_t i, size_t j)
 
 int	space_to_one(t_map *map, int i)
 {
-	int len;
-	int j;
+	int	len;
+	int	j;
 	int	k;
 
 	len = ft_strlen(map->tab[i]) - 1;

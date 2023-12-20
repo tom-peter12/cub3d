@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 20:29:51 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:51:56 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	check_and_save_path(t_parse *parse, char **str)
+void	check_and_save_path(t_parse *parse, char **str, int index)
 {
 	char	*stripped;
 
 	stripped = ft_strtrim(str[1], "\n");
+	if (parse->textures[index])
+	{
+		ft_putendl_fd(DUPLICATE_ATTR, 2);
+		free(stripped);
+		exit_return_freer(parse, 1);
+	}
 	if (ft_check_file(stripped))
 	{
 		free(stripped);
@@ -42,14 +48,14 @@ void	ft_texture_filler(t_parse *parse, char **tmp, char *strpd)
 		ft_putendl_fd(MISSING_TEXTURE_PATH, 2);
 		exit_return_freer(parse, 1);
 	}
-	if (ft_strcmp(tmp[0], "NO") == 0 && !ft_isattr_dup(parse, NO))
-		check_and_save_path(parse, tmp);
-	else if (ft_strcmp(tmp[0], "SO") == 0 && !ft_isattr_dup(parse, SO))
-		check_and_save_path(parse, tmp);
-	else if (ft_strcmp(tmp[0], "WE") == 0 && !ft_isattr_dup(parse, WE))
-		check_and_save_path(parse, tmp);
-	else if (ft_strcmp(tmp[0], "EA") == 0 && !ft_isattr_dup(parse, EA))
-		check_and_save_path(parse, tmp);
+	if (ft_strcmp(tmp[0], "NO") == 0)
+		check_and_save_path(parse, tmp, NO);
+	else if (ft_strcmp(tmp[0], "SO") == 0)
+		check_and_save_path(parse, tmp, SO);
+	else if (ft_strcmp(tmp[0], "WE") == 0)
+		check_and_save_path(parse, tmp, WE);
+	else if (ft_strcmp(tmp[0], "EA") == 0)
+		check_and_save_path(parse, tmp, EA);
 }
 
 int	ft_fill_attributes(t_parse *parse)
@@ -70,20 +76,15 @@ int	ft_fill_attributes(t_parse *parse)
 		else if (ft_strcmp(strpd, "C") == 0 || ft_strcmp(strpd, "F") == 0)
 		{
 			if (ft_ceiling_floor(parse, strpd))
-				return (1);
+				return (free(strpd), 1);
 		}
 		else if (strpd[0] != ' ' && strpd[0] != '\n' && strpd[0] != '\0')
-		{
-			free(strpd);
-			ft_putendl_fd(UNKNOWN_IDENTIFIER, 2);
-			return (ft_double_array_free(tmp), 1);
-		}
+			return (free(strpd), ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), \
+				ft_double_array_free(tmp), 1);
 	}
 	else
 		ft_fill_map_parser(parse);
-	free(strpd);
-	ft_double_array_free(tmp);
-	return (0);
+	return (free(strpd), ft_double_array_free(tmp), 0);
 }
 
 void	ft_map_dimension(t_parse *parse)
@@ -137,5 +138,6 @@ int	ft_fill_parser(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
+	close(parse->map_fd);
 	return (0);
 }
