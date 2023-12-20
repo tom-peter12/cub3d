@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 23:23:42 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 03:53:29 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,6 @@ static int	ft_not_enclosed(t_map *map, size_t i, size_t j)
 	return (0);
 }
 
-char	*ft_strrtrim(char const *s1, char const *set)
-{
-	size_t	left;
-	size_t	right;
-
-	if (!(s1) || !(set))
-		return (NULL);
-	left = 0;
-	right = ft_strlen(s1);
-	if (right == 0)
-		return (NULL);
-	right--;
-	while (s1[right] && ft_strchr(set, s1[right]))
-	{
-		right--;
-	}
-	return (ft_substr(s1, left, right - left + 1));
-}
-
-
 int	space_to_one(char *str)
 {
 	int	len;
@@ -84,16 +64,12 @@ int	space_to_one(char *str)
 	(void) len;
 	while (str[j] == ' ')
 		j++;
-	// printf("%s\n", (str + 10));
-
-	// ft_putendl_fd(str + 34, 1);
-	// ft_putchar_fd(str[37], 1);
-	// while (str && j < len && str[j] != 0)
-	// {
-	// 	if (str[j] == ' ')
-	// 		str[j] = '1';
-	// 	j++;
-	// }
+	while (str && j < len && str[j] != 0)
+	{
+		if (str[j] == ' ')
+			str[j] = '1';
+		j++;
+	}
 	return (0);
 }
 
@@ -133,7 +109,6 @@ int	ft_closed_map(t_parse *parse)
 			return (ft_putendl_fd(NEW_LINE_IN_MAP, 2), 1);
 		strtmp = ft_strrtrim(parse->map_tmp[i], " \n");
 		ft_memcpy(parse->map->tab[i], strtmp, ft_strlen(strtmp) + 1);
-		// ft_putchar_fd(parse->map_tmp[i][35], 1);
 		if (space_to_one(parse->map->tab[i]))
 			return (1);
 		i++;
@@ -142,7 +117,5 @@ int	ft_closed_map(t_parse *parse)
 	parse->map->tab[i] = 0;
 	if (ft_everything_enclosed(parse->map))
 		return (ft_putendl_fd(MAP_NOT_ENCLOSED, 2), 1);
-	printf("%lu, %lu\n", parse->map->height, parse->map->width);
-	// ft_double_array_printer(parse->map->tab);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/22 14:25:03 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 03:53:47 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,23 @@ int	ft_validate_args(t_parse *parse, int argc, char **argv)
 	if (ft_check_file(parse->map_file))
 		return (1);
 	return (0);
+}
+
+char	*ft_strrtrim(char const *s1, char const *set)
+{
+	size_t	left;
+	size_t	right;
+
+	if (!(s1) || !(set))
+		return (NULL);
+	left = 0;
+	right = ft_strlen(s1);
+	if (right == 0)
+		return (NULL);
+	right--;
+	while (s1[right] && ft_strchr(set, s1[right]))
+	{
+		right--;
+	}
+	return (ft_substr(s1, left, right - left + 1));
 }

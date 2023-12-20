@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:23:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 23:29:49 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 02:06:07 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,7 @@ void	ft_fill_map_parser(t_parse *parse)
 	if (parse->line)
 		parse->map_tmp[i] = ft_strdup(parse->line);
 	i++;
-	if (i == parse->map_height)
-		parse->map_tmp[i] = NULL;
-	// ft_putchar_fd('[', 1);
-	// ft_putchar_fd(parse->map_tmp[0][36], 1);
-	// ft_putchar_fd(']', 1);
-	// ft_putchar_fd('\n', 1);
 }
-
-// int	is_defo_map_line(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if ((str[i] != '\n' || str[i] != ' ' || str[i] != 'W' || str[i] != 'N'
-// 				|| str[i] != 'S' || str[i] != 'E' || str[i] != '1'
-// 				|| str[i] != '0'))
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 int	is_defo_map_line(char *str)
 {

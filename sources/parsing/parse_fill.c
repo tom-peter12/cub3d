@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 21:20:12 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 03:51:10 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,40 @@ int	ft_fill_attributes(t_parse *parse)
 	}
 	else
 		ft_fill_map_parser(parse);
-	
-	// ft_putendl_fd(parse->map_tmp[0], 1);
-	// ft_putchar_fd('[', 1);
-	// ft_putchar_fd(parse->map_tmp[0][36], 1);
-	// ft_putchar_fd(']', 1);
-	// ft_putchar_fd('\n', 1);
-	
 	return (free(strpd), ft_double_array_free(tmp), 0);
 }
 
+// void	ft_map_dimension(t_parse *parse)
+// {
+// 	char	**tmp;
+// 	int		start_counting;
+// 	int		len;
+
+// 	start_counting = 0;
+// 	len = 0;
+// 	while (parse->line)
+// 	{
+// 		tmp = ft_split(parse->line, ' ');
+// 		if (tmp && tmp[0])
+// 		{
+// 			len = ft_strlen(tmp[0]) - 1;
+// 			if (len > parse->map_width)
+// 				parse->map_width = len;
+// 			if (start_counting || tmp[0][0] == '1' || tmp[0][0] == '0')
+// 			{
+// 				if (!start_counting)
+// 					start_counting = 1;
+// 				parse->map_height++;
+// 			}
+// 		}
+// 		ft_double_array_free(tmp);
+// 		free(parse->line);
+// 		parse->line = get_next_line(parse->map_fd);
+// 	}
+// }
+
 void	ft_map_dimension(t_parse *parse)
 {
-	char	**tmp;
 	int		start_counting;
 	int		len;
 
@@ -104,20 +125,15 @@ void	ft_map_dimension(t_parse *parse)
 	len = 0;
 	while (parse->line)
 	{
-		tmp = ft_split(parse->line, ' ');
-		if (tmp && tmp[0])
+		len = ft_strlen(parse->line) - 1;
+		if (len > parse->map_width)
+			parse->map_width = len;
+		if (start_counting || is_defo_map_line(parse->line))
 		{
-			len = ft_strlen(tmp[0]) - 1;
-			if (len > parse->map_width)
-				parse->map_width = len;
-			if (start_counting || tmp[0][0] == '1' || tmp[0][0] == '0')
-			{
-				if (!start_counting)
-					start_counting = 1;
-				parse->map_height++;
-			}
+			if (!start_counting)
+				start_counting = 1;
+			parse->map_height++;
 		}
-		ft_double_array_free(tmp);
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
@@ -133,7 +149,7 @@ int	ft_fill_parser(t_parse *parse)
 	close(parse->map_fd);
 	if (parse->map_height == 0)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
-	parse->map_tmp = (char **)malloc(sizeof(char *) * parse->map_height + 1);
+	parse->map_tmp = ft_calloc(sizeof(char *), (parse->map_height + 1));
 	if (parse->map_tmp == NULL)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map_fd = open(parse->map_file, O_RDONLY);
@@ -145,7 +161,6 @@ int	ft_fill_parser(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
-	// ft_double_array_printer(parse->map_tmp);
 	close(parse->map_fd);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 16:51:25 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 01:37:20 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		ft_init_valid_map(t_parse *parse, t_map *map, int len);
 
 int		ft_texture_files(t_parse *parse);
 
+char	*ft_strrtrim(char const *s1, char const *set);
 /**
  * Ray casting files
  * 
