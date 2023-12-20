@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:23:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 02:44:48 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:19:21 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	ft_fill_map_parser(t_parse *parse)
 		parse->map_tmp[i] = ft_strdup(parse->line);
 	i++;
 	if (i == parse->map_height)
-		parse->map_tmp[i] = 0;
+		parse->map_tmp[i] = NULL;
+	// ft_putchar_fd('[', 1);
+	// ft_putchar_fd(parse->map_tmp[0][36], 1);
+	// ft_putchar_fd(']', 1);
+	// ft_putchar_fd('\n', 1);
 }
 
 // int	is_defo_map_line(char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 02:45:51 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:51:09 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,60 @@ static int	ft_not_enclosed(t_map *map, size_t i, size_t j)
 	return (0);
 }
 
-int	space_to_one(t_map *map, int i)
+char	*ft_strrtrim(char const *s1, char const *set)
+{
+	size_t	left;
+	size_t	right;
+
+	if (!(s1) || !(set))
+		return (NULL);
+	left = 0;
+	right = ft_strlen(s1);
+	if (right == 0)
+		return (NULL);
+	right--;
+	while (s1[right] && ft_strchr(set, s1[right]))
+	{
+		right--;
+	}
+	return (ft_substr(s1, left, right - left + 1));
+}
+
+
+int	space_to_one(char *str)
 {
 	int	len;
 	int	j;
-	int	k;
 
-	len = ft_strlen(map->tab[i]) - 1;
+	if (!str)
+		return (1);
+	len = ft_strlen(str);
 	j = 0;
-	while (map->tab[i][j] == ' ')
+	while (str[j] == ' ')
 		j++;
-	k = j + 1;
-	while (k < len)
-	{
-		if (map->tab[i][k] == ' ')
-			map->tab[i][k] = '1';
-		k++;
-	}
+	// printf("%s\n", (str + 10));
+
+	// ft_putendl_fd(str + 34, 1);
+	// ft_putchar_fd(str[37], 1);
+	// while (str && j < len && str[j] != 0)
+	// {
+	// 	if (str[j] == ' ')
+	// 		str[j] = '1';
+	// 	j++;
+	// }
 	return (0);
 }
 
-static int	ft_everything_enclosed(t_map *map)
+int	ft_everything_enclosed(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < (int)map->height)
+	while (map->tab[i] && i < (int)map->height)
 	{
 		j = 0;
-		while (j < (int)ft_strlen(map->tab[i]))
+		while ((j < (int)ft_strlen(map->tab[i])))
 		{
 			if (map->tab[i][j] == '0' || ft_strchr("NWSE", map->tab[i][j]))
 				if (ft_not_enclosed(map, i, j))
@@ -97,6 +121,7 @@ int	ft_closed_map(t_parse *parse)
 {
 	int			map_len;
 	int			i;
+	char		*strtmp;
 
 	map_len = map_end(parse);
 	i = 0;
@@ -105,15 +130,18 @@ int	ft_closed_map(t_parse *parse)
 	{
 		if (!white_space(parse->map_tmp[i]))
 			return (ft_putendl_fd(NEW_LINE_IN_MAP, 2), 1);
-		ft_strlcpy(parse->map->tab[i], parse->map_tmp[i], \
-			ft_strlen(parse->map_tmp[i]));
-		if (space_to_one(parse->map, i))
+		strtmp = ft_strrtrim(parse->map_tmp[i], " \n");
+		ft_memcpy(parse->map->tab[i], strtmp, ft_strlen(strtmp) + 1);
+		// ft_putchar_fd(parse->map_tmp[i][35], 1);
+		if (space_to_one(parse->map->tab[i]))
 			return (1);
 		i++;
+		free(strtmp);
 	}
 	parse->map->tab[i] = 0;
 	if (ft_everything_enclosed(parse->map))
 		return (ft_putendl_fd(MAP_NOT_ENCLOSED, 2), 1);
+	printf("%lu, %lu\n", parse->map->height, parse->map->width);
 	// ft_double_array_printer(parse->map->tab);
 	return (0);
 }

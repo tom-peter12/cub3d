@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:40:58 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 21:39:55 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 13:30:05 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_check_up_down(t_map *map, size_t j, ssize_t *down, ssize_t *up)
 	}
 	while (*down < (ssize_t)map->height && map->tab[*down][j] != '1')
 	{
-		if (*down == (ssize_t)map->height || map->tab[*down][j] == '\0')
+		if (*down == (ssize_t)map->height || map->tab[*down][j] == '\0' || \
+			map->tab[*down][j] == ' ')
 			return (1);
 		(*down)++;
 	}

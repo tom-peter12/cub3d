@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 02:51:56 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:17:18 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,13 @@ int	ft_fill_attributes(t_parse *parse)
 	}
 	else
 		ft_fill_map_parser(parse);
+	
+	// ft_putendl_fd(parse->map_tmp[0], 1);
+	// ft_putchar_fd('[', 1);
+	// ft_putchar_fd(parse->map_tmp[0][36], 1);
+	// ft_putchar_fd(']', 1);
+	// ft_putchar_fd('\n', 1);
+	
 	return (free(strpd), ft_double_array_free(tmp), 0);
 }
 
@@ -126,7 +133,7 @@ int	ft_fill_parser(t_parse *parse)
 	close(parse->map_fd);
 	if (parse->map_height == 0)
 		return (ft_putendl_fd(EMPTY_MAP, 2), 1);
-	parse->map_tmp = ft_calloc(sizeof(char *), parse->map_height + 1);
+	parse->map_tmp = (char **)malloc(sizeof(char *) * parse->map_height + 1);
 	if (parse->map_tmp == NULL)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	parse->map_fd = open(parse->map_file, O_RDONLY);
@@ -138,6 +145,7 @@ int	ft_fill_parser(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
+	// ft_double_array_printer(parse->map_tmp);
 	close(parse->map_fd);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 02:40:38 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:43 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_color_validate(char **str)
 	while (str && str[++i])
 	{
 		tmp = ft_strtrim(str[i], " ");
+		if (ft_strlen(tmp) == 0)
+			return (free(tmp), ft_putendl_fd(COLOR_SHOULD_RGB, 1), 1);
 		if (ft_invalid_char(tmp))
 			return (free(tmp), ft_putendl_fd(INVALID_CHAR_COLOR, 2), 1);
 		if (ft_atoi(tmp) < 0 || ft_atoi(tmp) > 255)
@@ -57,21 +59,6 @@ int	ft_color_validate(char **str)
 			return (ft_putendl_fd(COLOR_OUT_OF_RANGE, 2), 1);
 		}
 		free(tmp);
-	}
-	return (0);
-}
-
-// dead code
-int	ft_check_attributes(t_parse *parse)
-{
-	int	i;
-
-	i = 0;
-	while (i < 6)
-	{
-		if (!parse->dup_check[i])
-			return (ft_putendl_fd("Error\nMissing Attribute", 2), 1);
-		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 19:06:56 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 13:23:06 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ void	init_textures(t_game *game)
 		game->texture[i].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
 			game->parse.textures[i], &game->texture[i].width, \
 			&game->texture[i].height);
-		if (game->texture[i].img == NULL)
+		if (game->texture[i].img == NULL || game->texture[i].width \
+			/ game->texture[i].height != 1)
 			close_window(game);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:29:11 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 13:47:30 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:08:07 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ void	ft_locate_player(t_game *game)
 			str = ft_strchr("NSEW", game->parse.map->tab[i][j]);
 			if (str)
 			{
-				printf("{%s}, [%d, %d]\n", str, i, j);
-				game->fps.pos.x = i + 0.25;
-				game->fps.pos.y = j + 0.25;
+				game->fps.pos.x = i + 0.5;
+				game->fps.pos.y = j + 0.5;
 				ft_spawn_player(game, str);
 				return ;
 			}
