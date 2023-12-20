@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:23:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 21:19:21 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 23:29:49 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ int	ft_ceiling_floor(t_parse *parse, char *c_f)
 		return (ft_double_array_free(c_f_val_arr), 1);
 	if (color_fill(parse, c_f_val_arr, c_f))
 		return (ft_double_array_free(c_f_val_arr), 1);
+	ft_double_array_free(c_f_val_arr);
 	return (0);
 }

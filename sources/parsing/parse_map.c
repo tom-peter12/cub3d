@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 20:51:09 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 23:23:42 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	space_to_one(char *str)
 		return (1);
 	len = ft_strlen(str);
 	j = 0;
+	(void) len;
 	while (str[j] == ' ')
 		j++;
 	// printf("%s\n", (str + 10));

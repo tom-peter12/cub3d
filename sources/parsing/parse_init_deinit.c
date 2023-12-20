@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 15:21:58 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 23:27:50 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	ft_init_parse(t_parse *parse)
 	parse->dup_check = (int *)ft_calloc(7, sizeof(int));
 	if (!parse->dup_check)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
-	if (!parse->map_file)
-		parse->map_file = NULL;
+	parse->map_file = NULL;
 	parse->map_height = 0;
 	parse->map_tmp = NULL;
 	parse->line = NULL;

@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 15:09:13 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 23:31:54 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	main(int argc, char **argv)
 
 	parser(&game.parse, argc, argv);
 	init_game(&game);
+	game.mouse.x = 0;
+	game.mouse.y = 0;
 	mlx_hook(game.cmlx.mlx_win, 6, 1L << 6, follow_mouse, &game);
 	mlx_hook(game.cmlx.mlx_win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.cmlx.mlx_win, 3, 1L << 1, key_release, &game);
