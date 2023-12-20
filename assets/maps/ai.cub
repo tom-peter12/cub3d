@@ -1,11 +1,10 @@
-SO ./assets/texture/ai/south.xpm
 NO ./assets/texture/ai/north.xpm
+SO ./assets/texture/ai/south.xpm
 WE ./assets/texture/ai/west.xpm
 EA ./assets/texture/ai/east.xpm
 
 C 211, 176, 131
 F 182, 102, 89
-
 
 1111111111111111111111111111111       
 1000001000000010000000100000001

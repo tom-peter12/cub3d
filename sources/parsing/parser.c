@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:53:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 21:42:47 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:40:38 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	ft_color_validate(char **str)
 	return (0);
 }
 
+// dead code
 int	ft_check_attributes(t_parse *parse)
 {
 	int	i;
@@ -68,7 +69,6 @@ int	ft_check_attributes(t_parse *parse)
 	i = 0;
 	while (i < 6)
 	{
-		printf("%d\n", parse->dup_check[i]);
 		if (!parse->dup_check[i])
 			return (ft_putendl_fd("Error\nMissing Attribute", 2), 1);
 		i++;
@@ -86,6 +86,4 @@ void	parser(t_parse *parse, int argc, char **argv)
 		exit_return_freer(parse, 1);
 	if (ft_validate_parsed(parse))
 		exit_return_freer(parse, 1);
-	// if (ft_check_attributes(parse))
-	// 	exit_return_freer(parse, 1);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/19 21:30:04 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/20 04:13:26 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   parse_init_deinit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 20:26:26 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:26:13 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	ft_init_ceiling_floor(t_parse *parse)
+{
+	parse->map->c_ceil = ft_calloc(2, sizeof(t_color));
+	if (!parse->map->c_ceil)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
+	parse->map->c_ceil->r = -1;
+	parse->map->c_ceil->b = -1;
+	parse->map->c_ceil->g = -1;
+	parse->map->c_floor = ft_calloc(2, sizeof(t_color));
+	if (!parse->map->c_floor)
+		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
+	parse->map->c_floor->r = -1;
+	parse->map->c_floor->b = -1;
+	parse->map->c_floor->g = -1;
+	return (0);
+}
 
 int	ft_init_parse(t_parse *parse)
 {
@@ -29,12 +46,8 @@ int	ft_init_parse(t_parse *parse)
 	parse->map = ft_calloc(2, sizeof(t_map));
 	if (!parse->map)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
-	parse->map->c_ceil = ft_calloc(2, sizeof(t_color));
-	if (!parse->map->c_ceil)
-		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
-	parse->map->c_floor = ft_calloc(2, sizeof(t_color));
-	if (!parse->map->c_floor)
-		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
+	if (ft_init_ceiling_floor(parse))
+		return (1);
 	return (0);
 }
 

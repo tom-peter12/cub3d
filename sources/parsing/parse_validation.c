@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 20:58:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:45:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ int	ft_valid_map(t_parse *parse)
 	return (0);
 }
 
+int	ft_valid_ceiling_floor(t_parse *parse)
+{
+	if (parse->map->c_ceil->r == -1 || parse->map->c_ceil->b == -1
+		|| parse->map->c_ceil->g == -1)
+		return (ft_putendl_fd(MISSING_C, 2), 1);
+	if (parse->map->c_floor->r == -1 || parse->map->c_floor->b == -1
+		|| parse->map->c_floor->g == -1)
+		return (ft_putendl_fd(MISSING_F, 2), 1);
+	return (0);
+}
+
 int	ft_validate_parsed(t_parse *parse)
 {
 	if (empty_texture_field(parse))
@@ -62,6 +73,8 @@ int	ft_validate_parsed(t_parse *parse)
 	if (ft_valid_map(parse))
 		return (1);
 	if (ft_closed_map(parse))
+		return (1);
+	if (ft_valid_ceiling_floor(parse))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/15 17:20:13 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:36:58 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define INVALID_FILE_EXT "Error\nInvalid File Extension"
 
 # define DUPLICATE_ATTR "Error\nDuplicate Attribute"
+
+# define DUPLICATE_CEILING "Error\nDuplicate Ceiling Attribute"
+# define DUPLICATE_FLOOR "Error\nDuplicate Floor Attribute"
 
 # define NOT_FILE "Error\nPlease Provide a File"
 
