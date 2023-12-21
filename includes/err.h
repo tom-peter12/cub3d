@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 02:36:58 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:04:04 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define DUPLICATE_ATTR "Error\nDuplicate Attribute"
 
 # define DUPLICATE_CEILING "Error\nDuplicate Ceiling Attribute"
+
 # define DUPLICATE_FLOOR "Error\nDuplicate Floor Attribute"
 
 # define NOT_FILE "Error\nPlease Provide a File"
@@ -65,5 +66,7 @@
 # define MAP_NOT_ENCLOSED "Error\nMap Should be Enclosed"
 
 # define MISSING_TEXTURE_PATH "Error\nMissing Texture Path"
+
+# define DIFF_TEXTURE_DIMEN "Error\nInconsistent Texture Dimensions"
 
 #endif

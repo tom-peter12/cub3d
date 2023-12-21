@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 03:53:29 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:31:44 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	space_to_one(char *str)
 		return (1);
 	len = ft_strlen(str);
 	j = 0;
-	(void) len;
 	while (str[j] == ' ')
 		j++;
 	while (str && j < len && str[j] != 0)

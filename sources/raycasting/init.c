@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 13:23:06 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:02:53 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,25 @@ void	init_keys(t_game *game)
 
 void	init_textures(t_game *game)
 {
-	int	i;
+	int			i;
+	t_vector2	tmp;
 
-	i = 0;
+	i = 1;
+	game->texture[0].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
+		game->parse.textures[0], &game->texture[0].width, \
+		&game->texture[0].height);
+	tmp.x = game->texture[0].width;
+	tmp.y = game->texture[0].height;
 	while (i < 4)
 	{
 		game->texture[i].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
 			game->parse.textures[i], &game->texture[i].width, \
 			&game->texture[i].height);
+		if (tmp.x != game->texture[i].width || tmp.y != game->texture[i].height)
+		{
+			ft_putendl_fd(DIFF_TEXTURE_DIMEN, 2);
+			close_window(game);
+		}
 		if (game->texture[i].img == NULL || game->texture[i].width \
 			/ game->texture[i].height != 1)
 			close_window(game);

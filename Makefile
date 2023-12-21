@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
+#    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/21 02:27:33 by hatesfam         ###   ########.fr        #
+#    Updated: 2023/12/21 14:21:54 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS      	= $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)/%.o, $(SRC))
 FSANITIZE 	= -g3 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
 	
 CC        	= cc
-CFLAGS    	= -Wall -Wextra -Werror -g $(FSANITIZE)
+CFLAGS    	= -Wall -Wextra -Werror -g
 RM        	= rm -rf
 MacLinker 	= -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink 	= -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 02:56:34 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:04:23 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	parser(&game.parse, argc, argv);
-	printf("[parse done]\n");
 	init_game(&game);
 	game.mouse.x = 0;
 	game.mouse.y = 0;
