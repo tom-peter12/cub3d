@@ -1,7 +1,7 @@
-NO ./assets/texture/ai/north.xpm
-SO ./assets/texture/ai/south.xpm
-WE ./assets/texture/ai/west.xpm
-EA ./assets/texture/ai/east.xpm
+NO            ./assets/texture/ai/north.xpm            
+SO ./assets/texture/ai/south.xpm              
+WE ./assets/texture/ai/west.xpm   
+EA ./assets/texture/ai/east.xpm     
 
 C 211, 176, 131
 F 182, 102, 89
@@ -13,3 +13,9 @@ F 182, 102, 89
 1110000000000000001100000000011111111
    11  10101010101010101011100000000011
 1111111111111111111111111111111111111
+
+
+
+
+
+

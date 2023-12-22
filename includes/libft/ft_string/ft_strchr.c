@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:39:10 by tpetros           #+#    #+#             */
-/*   Updated: 2023/09/30 21:15:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 19:33:33 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strchr(const char *src, int c)
 	unsigned char	*str;
 	unsigned char	character;
 
+	if (!src)
+		return (NULL);
 	str = (unsigned char *)src;
 	character = (unsigned char)c;
 	while (*str != character)

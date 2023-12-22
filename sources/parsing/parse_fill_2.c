@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:23:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 02:06:07 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:29:13 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	is_defo_map_line(char *str)
 	int	i;
 
 	i = 0;
+	if (!str || str[i] == '\0')
+		return (0);
 	while (str[i])
 	{
 		if ((str[i] == '\n' || str[i] == ' ' || str[i] == 'W' || \
@@ -97,7 +99,8 @@ int	ft_ceiling_floor(t_parse *parse, char *c_f)
 	free(c_f_val);
 	if (ft_double_array_len(c_f_val_arr) != 3)
 	{
-		ft_double_array_free(c_f_val_arr);
+		if (c_f_val_arr)
+			ft_double_array_free(c_f_val_arr);
 		return (ft_putendl_fd(COLOR_SHOULD_RGB, 2), 1);
 	}
 	if (ft_color_validate(c_f_val_arr))

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 03:50:52 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/22 21:32:30 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	empty_texture_field(t_parse *parse)
 	while (i < 4)
 	{
 		if (!parse->textures[i])
-			return (ft_putendl_fd(MISSING_TEXTURE_PATH, 2), 1);
+			return (printf("tom"), ft_putendl_fd(MISSING_TEXTURE_PATH, 2), 1);
 		i++;
 	}
 	return (0);

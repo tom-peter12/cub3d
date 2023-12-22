@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 18:56:24 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 21:39:12 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 
 	ft_memset(&game, 0, sizeof(t_game));
 	parser(&game.parse, argc, argv);
+	printf("parse: DONE\n");
 	init_game(&game);
 	game.mouse.x = 0;
 	game.mouse.y = 0;

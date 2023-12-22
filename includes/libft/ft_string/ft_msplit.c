@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_msplit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:34:22 by tpetros           #+#    #+#             */
-/*   Updated: 2023/11/21 10:43:20 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 19:23:08 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	count_words(char const *s, char *c)
 
 	sum = 0;
 	in_word = 0;
+	if (!s)
+		return (0);
 	while (*s != '\0')
 	{
 		if (!is_spacer(c, *s) && in_word == 0)
