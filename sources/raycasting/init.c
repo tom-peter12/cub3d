@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 18:58:14 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 15:08:19 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,11 @@ void	init_textures(t_game *game)
 	t_vector2	tmp;
 
 	i = 1;
-	game->texture[0].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
-		game->parse.textures[0], &game->texture[0].width, \
-		&game->texture[0].height);
-	tmp.x = game->texture[0].width;
-	tmp.y = game->texture[0].height;
+	game->texture[NO].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
+		game->parse.textures[NO], &game->texture[NO].width, \
+		&game->texture[NO].height);
+	tmp.x = game->texture[NO].width;
+	tmp.y = game->texture[NO].height;
 	while (i < 4)
 	{
 		game->texture[i].img = mlx_xpm_file_to_image(game->cmlx.ptr, \

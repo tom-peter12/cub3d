@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:50:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 19:32:26 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 15:14:07 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	tex_side(t_game *game)
 {
 	if (game->ray.dda.side == 0 && game->ray.ray_vec.x > 0)
 	{
-		game->tex_dim.x = game->texture[NO].width;
-		game->tex_dim.y = game->texture[NO].height;
-	}
-	else if (game->ray.dda.side == 0 && game->ray.ray_vec.x < 0)
-	{
 		game->tex_dim.x = game->texture[SO].width;
 		game->tex_dim.y = game->texture[SO].height;
 	}
-	else if (game->ray.dda.side == 1 && game->ray.ray_vec.x > 0)
+	else if (game->ray.dda.side == 0 && game->ray.ray_vec.x < 0)
 	{
-		game->tex_dim.x = game->texture[EA].width;
-		game->tex_dim.y = game->texture[EA].height;
+		game->tex_dim.x = game->texture[NO].width;
+		game->tex_dim.y = game->texture[NO].height;
 	}
-	else if (game->ray.dda.side == 1 && game->ray.ray_vec.x < 0)
+	else if (game->ray.dda.side == 1 && game->ray.ray_vec.x > 0)
 	{
 		game->tex_dim.x = game->texture[WE].width;
 		game->tex_dim.y = game->texture[WE].height;
+	}
+	else if (game->ray.dda.side == 1 && game->ray.ray_vec.x < 0)
+	{
+		game->tex_dim.x = game->texture[EA].width;
+		game->tex_dim.y = game->texture[EA].height;
 	}
 }
 
@@ -42,10 +42,10 @@ int	get_color(t_game *game)
 
 	color = 0;
 	if (game->ray.dda.side == 0 && game->ray.ray_vec.x > 0)
-		color = *(game->texture[NO].addr + \
+		color = *(game->texture[SO].addr + \
 			(int)(game->tex_dim.y * game->tex_y + game->tex_x));
 	else if (game->ray.dda.side == 0 && game->ray.ray_vec.x < 0)
-		color = *(game->texture[SO].addr + \
+		color = *(game->texture[NO].addr + \
 			(int)(game->tex_dim.y * game->tex_y + game->tex_x));
 	else if (game->ray.dda.side == 1 && game->ray.ray_vec.y > 0)
 		color = *(game->texture[EA].addr + \
