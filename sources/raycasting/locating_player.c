@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:29:11 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/20 15:08:07 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 13:40:59 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	ft_spawn_player_ew(t_game *game, char *str)
 
 void	ft_spawn_player(t_game *game, char *str)
 {
-	if (str[0] == 'N')
+	if (str[0] == 'S')
 	{
 		game->fps.dir.x = -1;
 		game->fps.dir.y = 0;
 		game->fps.plane.x = 0;
 		game->fps.plane.y = -0.66;
 	}
-	else if (str[0] == 'S')
+	else if (str[0] == 'N')
 	{
 		game->fps.dir.x = 1;
 		game->fps.dir.y = 0;

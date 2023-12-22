@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 14:30:31 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 12:23:02 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_and_save_path(t_parse *parse, char **str, int index)
 {
 	char	*stripped;
 
-	stripped = ft_strtrim(str[1], "\n");
+	stripped = ft_strtrim(str[1], " \n");
 	if (parse->textures[index])
 	{
 		ft_putendl_fd(DUPLICATE_ATTR, 2);
