@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:34:53 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 20:24:55 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/23 02:04:15 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	key_press(int keycode, t_game *game)
 	if (keycode == RIGHT)
 		game->key.right = 1;
 	if (keycode == ESC)
+	{
 		close_window(game);
+		exit_return_freer(&game->parse, 0);
+	}
 	return (0);
 }
 
@@ -59,6 +62,5 @@ int	close_window(t_game *game)
 		mlx_destroy_window(game->cmlx.ptr, game->cmlx.mlx_win);
 	if (game->cmlx.ptr || game->cmlx.img)
 		mlx_destroy_image(game->cmlx.ptr, game->cmlx.img);
-	exit_return_freer(&game->parse, 0);
 	return (0);
 }
