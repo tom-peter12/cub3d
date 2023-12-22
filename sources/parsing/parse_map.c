@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:49:04 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 14:31:44 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/23 00:20:25 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	ft_closed_map(t_parse *parse)
 	while (i < map_len)
 	{
 		if (!white_space(parse->map_tmp[i]))
-			return (ft_putendl_fd(NEW_LINE_IN_MAP, 2), 1);
+			return (ft_putendl_fd(EMPTY_LINE_IN_MAP, 2), 1);
 		strtmp = ft_strrtrim(parse->map_tmp[i], " \n");
 		ft_memcpy(parse->map->tab[i], strtmp, ft_strlen(strtmp) + 1);
 		if (space_to_one(parse->map->tab[i]))

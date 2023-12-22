@@ -2,10 +2,10 @@
 SO ./assets/texture/wolfenstein/eagle.xpm
 NO ./assets/texture/wolfenstein/greystone.xpm
 WE ./assets/texture/wolfenstein/mossy.xpm
-EA                                ./assets/texture/wolfenstein/wood.xpm
+EA  ./assets/texture/wolfenstein/wood.xpm
 
 
-F 00003,41 ,2
+F 03,41 ,2
 C 039,238,143
 
 

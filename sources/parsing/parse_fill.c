@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 21:38:28 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 00:47:09 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,16 @@ int	ft_fill_attributes(t_parse *parse)
 	char		**tmp;
 	char		*strpd;
 	char		*trimmed_p_line;
+	static int	map_line = 1;
 
 	trimmed_p_line = ft_strrtrim(parse->line, " \n");
-	if (!trimmed_p_line || trimmed_p_line[0] == '\0')
+	if ((!trimmed_p_line || trimmed_p_line[0] == '\0'))
 	{
+		if (i == 1 && map_line < parse->map_height)
+			return (ft_putendl_fd(EMPTY_LINE_IN_MAP, 2), 1);
 		if (trimmed_p_line)
 			free(trimmed_p_line);
+		map_line++;
 		return (0);
 	}
 	tmp = ft_msplit(trimmed_p_line, " ");
@@ -76,6 +80,7 @@ int	ft_fill_attributes(t_parse *parse)
 	}
 	else
 		ft_fill_map_parser(parse);
+	map_line++;
 	return (free(trimmed_p_line), free(strpd), ft_double_array_free(tmp), 0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 18:25:57 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/23 00:15:46 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 
 # define PLAYER_POS_NOT_FOUND "Error\nPlayer Position Not Found"
 
-# define NEW_LINE_IN_MAP "Error\nNew Line in Map"
+# define EMPTY_LINE_IN_MAP "Error\nNew Line in Map"
 
 # define INVALID_CHAR_COLOR "Error\nInvalid Character in Color"
 
@@ -70,5 +70,7 @@
 # define DIFF_TEXTURE_DIMEN "Error\nInconsistent Texture Dimensions"
 
 # define EXTRA_TOKEN_FOR_PATH "Error\nExtra Entry For Texture Path"
+
+# define EMPTY_TEXTURE_FILE "Error\nInvalid/Empty Texture File"
 
 #endif

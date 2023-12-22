@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 15:08:19 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 23:48:48 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,21 @@ void	init_keys(t_game *game)
  * @return {void}
  */
 
+void	init_textures_err(t_game *game, int i, t_vector2 tmp)
+{
+	if (tmp.x != game->texture[i].width || tmp.y != game->texture[i].height)
+	{
+		ft_putendl_fd(DIFF_TEXTURE_DIMEN, 2);
+		close_window(game);
+	}
+	if (game->texture[i].img == NULL || game->texture[i].width \
+		/ game->texture[i].height != 1)
+	{
+		ft_putendl_fd(EMPTY_TEXTURE_FILE, 2);
+		close_window(game);
+	}
+}
+
 void	init_textures(t_game *game)
 {
 	int			i;
@@ -123,6 +138,11 @@ void	init_textures(t_game *game)
 	game->texture[NO].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
 		game->parse.textures[NO], &game->texture[NO].width, \
 		&game->texture[NO].height);
+	if (game->texture[NO].img == NULL)
+	{
+		ft_putendl_fd(EMPTY_TEXTURE_FILE, 2);
+		close_window(game);
+	}
 	tmp.x = game->texture[NO].width;
 	tmp.y = game->texture[NO].height;
 	while (i < 4)
@@ -130,14 +150,7 @@ void	init_textures(t_game *game)
 		game->texture[i].img = mlx_xpm_file_to_image(game->cmlx.ptr, \
 			game->parse.textures[i], &game->texture[i].width, \
 			&game->texture[i].height);
-		if (tmp.x != game->texture[i].width || tmp.y != game->texture[i].height)
-		{
-			ft_putendl_fd(DIFF_TEXTURE_DIMEN, 2);
-			close_window(game);
-		}
-		if (game->texture[i].img == NULL || game->texture[i].width \
-			/ game->texture[i].height != 1)
-			close_window(game);
+		init_textures_err(game, i, tmp);
 		i++;
 	}
 }
