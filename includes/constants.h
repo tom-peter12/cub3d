@@ -6,16 +6,16 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:23:43 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 13:46:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 18:03:40 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
-# define MOVE_WEIGHT 0.15
+# define MOVE_WEIGHT 0.07
 # define ROT_WEIGHT 0.04
-# define MINIMAP_SCALE 10
+# define MINIMAP_SCALE 16
 
 # if __APPLE__
 #  define WIN_WIDTH  1920

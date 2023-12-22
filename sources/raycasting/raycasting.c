@@ -55,21 +55,18 @@ void	raycast(t_game *game, int i)
 	calculate_draw_start_end(game);
 }
 
-void	draw_square(t_game *game, int x, int y, int scale)
+void	draw_square(t_game *game, int x, int y, int color)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < scale)
+	while (i < MINIMAP_SCALE)
 	{
 		j = 0;
-		while (j < scale)
+		while (j < MINIMAP_SCALE)
 		{
-			if (scale == 5)
-				game->cmlx.addr[(y + j) * WIN_WIDTH + (x + i)] = 0x0000FF;
-			else
-				game->cmlx.addr[(y + j) * WIN_WIDTH + (x + i)] = 0x00FF00;
+			game->cmlx.addr[(y + j) * WIN_WIDTH + (x + i)] = color;
 			j++;
 		}
 		i++;
@@ -80,8 +77,7 @@ void	minimap2d(t_game *game)
 {
 	int		i;
 	int		j;
-	int		x;
-	int		y;
+	char	*tmp;
 
 	i = 0;
 	while (i < (int)game->parse.map->height)
@@ -89,17 +85,15 @@ void	minimap2d(t_game *game)
 		j = 0;
 		while (j < (int)game->parse.map->width)
 		{
-			x = j * MINIMAP_SCALE;
-			y = i * MINIMAP_SCALE;
-			if (game->parse.map->tab[i][j] == '1')
-				draw_square(game, x, y, MINIMAP_SCALE);
-			// else if (ft_strchr("NSEW0 ", game->parse.map->tab[i][j]))
-			// 	draw_square(game, x, y, 0x000000);
+			tmp = ft_strchr("NSEW", game->parse.map->tab[i][j]);
+			if (game->parse.map->tab[i][j] == '0' || (tmp && tmp[0]))
+				draw_square(game, j * MINIMAP_SCALE, i * MINIMAP_SCALE, 0);
 			j++;
 		}
 		i++;
 	}
-	draw_square(game, game->fps.pos.y * 5, game->fps.pos.x * 5, 5);
+	draw_square(game, (int)game->fps.pos.y * MINIMAP_SCALE, \
+		(int)game->fps.pos.x * MINIMAP_SCALE, 0xFFFFFF);
 }
 
 int	kaboom(void *param)
