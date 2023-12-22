@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 12:23:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 18:52:12 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ void	ft_texture_filler(t_parse *parse, char **tmp, char *strpd)
 {
 	if (ft_double_array_len(tmp) != 2)
 	{
+		if (ft_double_array_len(tmp) < 2)
+			ft_putendl_fd(MISSING_TEXTURE_PATH, 2);
+		else if (ft_double_array_len(tmp) > 2)
+			ft_putendl_fd(EXTRA_TOKEN_FOR_PATH, 2);
 		ft_double_array_free(tmp);
 		free(strpd);
-		ft_putendl_fd(MISSING_TEXTURE_PATH, 2);
 		exit_return_freer(parse, 1);
 	}
 	if (ft_strcmp(tmp[0], "NO") == 0)

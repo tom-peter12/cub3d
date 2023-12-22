@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:09 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 15:04:04 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/22 18:25:57 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@
 # define MISSING_TEXTURE_PATH "Error\nMissing Texture Path"
 
 # define DIFF_TEXTURE_DIMEN "Error\nInconsistent Texture Dimensions"
+
+# define EXTRA_TOKEN_FOR_PATH "Error\nExtra Entry For Texture Path"
 
 #endif

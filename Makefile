@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/22 17:50:32 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/22 18:50:25 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS      	= $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)/%.o, $(SRC))
 FSANITIZE 	= -g3 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
 	
 CC        	= cc
-CFLAGS    	= -Wall -Wextra -Werror
+CFLAGS    	= -Wall -Wextra -Werror $(FSANITIZE)
 RM        	= rm -rf
 MacLinker 	= -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink 	= -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz

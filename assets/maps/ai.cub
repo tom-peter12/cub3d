@@ -1,4 +1,4 @@
-NO ./assets/texture/ai/north.xpm
+NO ./assets/texture/ai/north.xpm 
 SO ./assets/texture/ai/south.xpm
 WE ./assets/texture/ai/west.xpm
 EA ./assets/texture/ai/east.xpm
