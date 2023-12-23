@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 00:47:09 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 06:53:59 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_fill_attributes_util(t_parse *parse, char **tmp, char *strpd)
 	else if (ft_strcmp(strpd, "C") == 0 || ft_strcmp(strpd, "F") == 0)
 	{
 		if (ft_ceiling_floor(parse, strpd))
-			return (free(strpd), 1);
+			return (free(strpd), ft_double_array_free(tmp), 1);
 	}
 	else if (strpd[0] != ' ' && strpd[0] != '\n' && strpd[0] != '\0')
 		return (free(strpd), ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), \
@@ -64,24 +64,22 @@ int	ft_fill_attributes(t_parse *parse)
 	{
 		if (i == 1 && map_line < parse->map_height)
 			return (ft_putendl_fd(EMPTY_LINE_IN_MAP, 2), 1);
-		if (trimmed_p_line)
-			free(trimmed_p_line);
-		map_line++;
-		return (0);
+		return (map_line++, 0);
 	}
 	tmp = ft_msplit(trimmed_p_line, " ");
 	strpd = ft_strtrim(tmp[0], " \n");
-	if (i == 0 && ft_strchr(tmp[0], '1') && is_defo_map_line(strpd))
+	if (i == 0 && (ft_strchr(tmp[0], '1') || \
+		ft_strchr(tmp[0], '0')) && is_defo_map_line(strpd))
 		i = 1;
 	if (i == 0)
 	{
 		if (ft_fill_attributes_util(parse, tmp, strpd))
-			return (1);
+			return (free(trimmed_p_line), 1);
+		ft_double_array_free(tmp);
 	}
 	else
-		ft_fill_map_parser(parse);
-	map_line++;
-	return (free(trimmed_p_line), free(strpd), ft_double_array_free(tmp), 0);
+		ft_fill_map_parser(parse, tmp);
+	return (map_line++, free(trimmed_p_line), free(strpd), 0);
 }
 
 void	ft_map_dimension(t_parse *parse)

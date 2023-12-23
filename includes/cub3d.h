@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 00:34:22 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 06:42:53 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_and_save_path(t_parse *parse, char **str, int index);
 int		ft_fill_parser(t_parse *parse);
 
 // parse_fill_2.c
-void	ft_fill_map_parser(t_parse *parse);
+void	ft_fill_map_parser(t_parse *parse, char **tmp_to_free);
 int		is_defo_map_line(char *str);
 int		ft_comma_check(char *str);
 int		color_fill(t_parse *parse, char **color, char *c_f);

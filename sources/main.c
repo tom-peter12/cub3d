@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 00:47:58 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 06:45:55 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	main(int argc, char **argv)
 
 	ft_memset(&game, 0, sizeof(t_game));
 	parser(&game.parse, argc, argv);
-	printf("parse: DONE\n");
 	init_game(&game);
 	game.mouse.x = 0;
 	game.mouse.y = 0;
+	mlx_mouse_hide(game.cmlx.ptr, game.cmlx.mlx_win);
 	mlx_hook(game.cmlx.mlx_win, 6, 1L << 6, follow_mouse, &game);
 	mlx_hook(game.cmlx.mlx_win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.cmlx.mlx_win, 3, 1L << 1, key_release, &game);

@@ -6,18 +6,19 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:23:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 00:34:35 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 06:41:52 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_fill_map_parser(t_parse *parse)
+void	ft_fill_map_parser(t_parse *parse, char **tmp_to_free)
 {
 	static int	i;
 
 	if (parse->line)
 		parse->map_tmp[i] = ft_strdup(parse->line);
+	ft_double_array_free(tmp_to_free);
 	i++;
 }
 
