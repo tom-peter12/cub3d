@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_init_deinit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/21 03:50:25 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 15:51:10 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	exit_return_freer(t_parse *parse, int flag)
 		free(parse->map);
 	}
 	if (parse->line)
-		free(parse->line);
+		free(parse->line); 
 	exit(flag);
 }
 

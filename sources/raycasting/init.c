@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:16:56 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 02:03:57 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 15:51:29 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,14 +120,12 @@ void	init_textures_err(t_game *game, int i, t_vector2 tmp)
 	{
 		ft_putendl_fd(DIFF_TEXTURE_DIMEN, 2);
 		close_window(game);
-		exit_return_freer(&game->parse, 1);
 	}
 	if (game->texture[i].img == NULL || game->texture[i].width \
 		/ game->texture[i].height != 1)
 	{
 		ft_putendl_fd(EMPTY_TEXTURE_FILE, 2);
 		close_window(game);
-		exit_return_freer(&game->parse, 1);
 	}
 }
 
@@ -144,7 +142,6 @@ void	init_textures(t_game *game)
 	{
 		ft_putendl_fd(EMPTY_TEXTURE_FILE, 2);
 		close_window(game);
-		exit_return_freer(&game->parse, 1);
 	}
 	tmp.x = game->texture[NO].width;
 	tmp.y = game->texture[NO].height;
