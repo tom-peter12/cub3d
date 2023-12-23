@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:34:53 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 15:52:02 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/23 15:55:10 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	key_press(int keycode, t_game *game)
 	if (keycode == RIGHT)
 		game->key.right = 1;
 	if (keycode == ESC)
-	{
 		close_window(game);
-		exit_return_freer(&game->parse, 0);
-	}
 	return (0);
 }
 
