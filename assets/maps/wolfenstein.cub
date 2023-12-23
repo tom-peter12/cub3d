@@ -5,8 +5,8 @@ WE ./assets/texture/wolfenstein/mossy.xpm
 EA  ./assets/texture/wolfenstein/wood.xpm
 
 
-F 03,41 ,2
-C 039,238,143
+F 112, 112, 112
+C 56, 56, 56
 
 
 111111111

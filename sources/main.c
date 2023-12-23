@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 06:45:55 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 17:13:33 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	follow_mouse(int x, int y, t_game *game)
 {
+	if (x < 0 || x > WIN_WIDTH || y > WIN_HEIGHT || y < 0)
+		return (0);
 	if (game->mouse.x > x && !game->key.left && !game->key.right)
 	{
 		game->fps.dir.x = game->fps.dir.x * cos(-ROT_WEIGHT)
@@ -48,9 +50,7 @@ int	main(int argc, char **argv)
 	ft_memset(&game, 0, sizeof(t_game));
 	parser(&game.parse, argc, argv);
 	init_game(&game);
-	game.mouse.x = 0;
-	game.mouse.y = 0;
-	mlx_mouse_hide(game.cmlx.ptr, game.cmlx.mlx_win);
+	// mlx_mouse_hide(game.cmlx.ptr, game.cmlx.mlx_win);
 	mlx_hook(game.cmlx.mlx_win, 6, 1L << 6, follow_mouse, &game);
 	mlx_hook(game.cmlx.mlx_win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.cmlx.mlx_win, 3, 1L << 1, key_release, &game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 06:42:53 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:31:48 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,4 +134,5 @@ void	tex_which_side(t_game *game);
 void	render(t_game *game, int i);
 void	render_ceiling_floor(t_game *game, int i);
 
+int		follow_mouse(int x, int y, t_game *game);
 #endif
