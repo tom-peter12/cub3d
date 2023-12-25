@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:01:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/25 15:06:32 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/25 17:00:36 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ void	calculate_line_height(t_game *game)
  * 
  * This function is responsible for calculating the side distances for the 
  * Digital Differential Analyzer (DDA) algorithm. It determines the distance 
- * to the next side (either x or y) of the wall that the ray hits.
+ * to the next side (either x or y) of the wall that the ray hits. This is 
+ * the initial dist the ray has to travel to reach the closest grid line in
+ * the 2d world.
  * 
  * The steps performed in this function are as follows:
  * 1. Check the direction of the ray's x component. If it is negative, set the 
