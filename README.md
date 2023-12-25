@@ -1,4 +1,4 @@
-## Useful Materials We used.
+## Materials We used.
 
 
 1. https://lodev.org/cgtutor/raycasting.html
