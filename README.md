@@ -11,4 +11,4 @@
 
 5. https://www.khanacademy.org/math/linear-algebra
 
-6. 
+6. https://www.youtube.com/watch?v=NbSee-XM7WA
