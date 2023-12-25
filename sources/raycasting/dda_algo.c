@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:01:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/19 15:30:22 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/25 15:06:32 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,13 @@ void	calc_side_dist(t_game *game)
  * 4. Set the (game->ray.dda.hit) to 0, indicating that no wall has been hit.
  * 
  * 5. Call the calc_side_dist() function to calculate the side distances.
+ * 
+ * 
+ * delta_dist.x: The distance you need to move in the X direction to reach 
+ *               the next intersection.
+ * 
+ * delta_dist.y: The distance you need to move in the Y direction to reach 
+ *               the next intersection.
  * 
  * @param game Pointer to the game structure.
  * 
