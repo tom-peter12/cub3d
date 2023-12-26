@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:59:19 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 12:35:06 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 18:25:46 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,36 +84,15 @@ void	left_right_movement(t_game *game)
  * @return {void}
  * 
  */
+
 void	rotation_movement(t_game *game)
 {
 	game->fps.old_dir_x = game->fps.dir.x;
 	game->fps.old_plane_x = game->fps.plane.x;
 	if (game->key.left && !game->key.right)
-	{
-		game->fps.dir.x = game->fps.dir.x * cos(-ROT_WEIGHT)
-			- game->fps.dir.y * sin(-ROT_WEIGHT);
-		game->fps.dir.y = game->fps.old_dir_x * sin(-ROT_WEIGHT)
-			+ game->fps.dir.y * cos(-ROT_WEIGHT);
-		game->fps.plane.x = game->fps.plane.x * cos(-ROT_WEIGHT)
-			- game->fps.plane.y * sin(-ROT_WEIGHT);
-		game->fps.plane.y = game->fps.old_plane_x * sin(-ROT_WEIGHT)
-			+ game->fps.plane.y * cos(-ROT_WEIGHT);
-		game->fps.angle = game->fps.angle + \
-			(ROT_WEIGHT * 180 / M_PI);
-	}
+		left_rotation(game);
 	if (!game->key.left && game->key.right)
-	{
-		game->fps.dir.x = game->fps.dir.x * cos(ROT_WEIGHT)
-			- game->fps.dir.y * sin(ROT_WEIGHT);
-		game->fps.dir.y = game->fps.old_dir_x * sin(ROT_WEIGHT)
-			+ game->fps.dir.y * cos(ROT_WEIGHT);
-		game->fps.plane.x = game->fps.plane.x * cos(ROT_WEIGHT)
-			- game->fps.plane.y * sin(ROT_WEIGHT);
-		game->fps.plane.y = game->fps.old_plane_x * sin(ROT_WEIGHT)
-			+ game->fps.plane.y * cos(ROT_WEIGHT);
-		game->fps.angle = game->fps.angle + \
-			-1 * (ROT_WEIGHT * 180 / M_PI);
-	}
+		right_rotation(game);
 }
 
 void	da_movement_thang(t_game *game)

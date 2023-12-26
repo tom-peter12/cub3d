@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:29:11 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 12:18:18 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 18:36:22 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_spawn_player_ew(t_game *game, char *str)
 		game->fps.dir.y = 1;
 		game->fps.plane.x = -0.66;
 		game->fps.plane.y = 0;
-		game->fps.angle = 90;
+		game->fps.angle = 0;
 	}
 	else if (str[0] == 'W')
 	{
@@ -28,7 +28,7 @@ void	ft_spawn_player_ew(t_game *game, char *str)
 		game->fps.dir.y = -1;
 		game->fps.plane.x = 0.66;
 		game->fps.plane.y = 0;
-		game->fps.angle = 270;
+		game->fps.angle = 180;
 	}
 }
 
@@ -40,7 +40,7 @@ void	ft_spawn_player(t_game *game, char *str)
 		game->fps.dir.y = 0;
 		game->fps.plane.x = 0;
 		game->fps.plane.y = -0.66;
-		game->fps.angle = 180;
+		game->fps.angle = 90;
 	}
 	else if (str[0] == 'S')
 	{
@@ -48,7 +48,7 @@ void	ft_spawn_player(t_game *game, char *str)
 		game->fps.dir.y = 0;
 		game->fps.plane.x = 0;
 		game->fps.plane.y = 0.66;
-		game->fps.angle = 0;
+		game->fps.angle = 270;
 	}
 	else
 		ft_spawn_player_ew(game, str);

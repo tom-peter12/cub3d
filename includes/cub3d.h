@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 12:06:10 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 18:26:35 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 
 # include "libft/includes/libft.h"
 # include "err.h"
@@ -91,6 +92,10 @@ void	da_movement_thang(t_game *game);
 void	rotation_movement(t_game *game);
 void	left_right_movement(t_game *game);
 void	front_back_movement(t_game *game);
+
+// movement_utils.c
+void	right_rotation(t_game *game);
+void	left_rotation(t_game *game);
 
 // dda_algo.c
 void	pre_dda(t_game *game);

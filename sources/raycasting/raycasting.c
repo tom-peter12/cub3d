@@ -55,8 +55,6 @@ void	raycast(t_game *game, int i)
 	calculate_draw_start_end(game);
 }
 
-
-
 int	kaboom(void *param)
 {
 	t_game	*game;

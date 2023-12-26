@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:24:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 17:57:37 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 18:20:33 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,14 @@ typedef struct s_textures
 	int			ll;
 	int			en;
 }			t_texture;
+
+typedef struct s_entity
+{
+	double		rotation_angle;
+	double		max_iter;
+	double		angle_offset;
+	int			clr;
+}	t_entity;
 
 typedef struct s_game
 {

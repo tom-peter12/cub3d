@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/26 12:22:23 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/26 18:38:43 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_RAYCAST = dda_algo \
 				raycasting \
 				utils \
 				minimap_bonus \
+				movement_utils \
 
 SRC 		= $(addprefix $(SRC_PATH)parsing/, $(addsuffix .c, $(SRC_PARSE))) \
 			  $(addprefix $(SRC_PATH)raycasting/, $(addsuffix .c, $(SRC_RAYCAST))) \
@@ -82,13 +83,13 @@ $(OBJ_PATH):
 clean:
 	@echo "Cleaning objects"
 	@$(RM) $(OBJ_PATH)
-	# @make clean -sC $(MLX)
-	# @make clean -sC ./includes/libft
+	@make clean -sC $(MLX)
+	@make clean -sC ./includes/libft
 
 fclean: clean
 	@echo "Cleaning $(NAME)"
 	@$(RM) $(NAME)
-	# @make fclean -sC ./includes/libft
+	@make fclean -sC ./includes/libft
 
 re: fclean all
 
