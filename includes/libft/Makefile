@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 17:16:53 by tpetros           #+#    #+#              #
-#    Updated: 2023/11/21 11:02:45 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/26 19:42:08 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,10 +110,10 @@ CFLAGS = -Wall -Werror -Wextra
 OBJS = ${SRC_FILES:.c=.o}
 
 .c.o:
-	${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+	@ar rcs ${NAME} ${OBJS}
 
 all: ${NAME}
 
