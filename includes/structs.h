@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:24:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 16:12:07 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 17:57:37 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_fps
 	t_vector2	plane;
 	double		old_plane_x;
 	double		old_dir_x;
+	double		angle;
 }			t_fps;
 
 typedef struct s_key

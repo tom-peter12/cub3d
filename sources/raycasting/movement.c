@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:59:19 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 15:49:48 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 12:35:06 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	rotation_movement(t_game *game)
 			- game->fps.plane.y * sin(-ROT_WEIGHT);
 		game->fps.plane.y = game->fps.old_plane_x * sin(-ROT_WEIGHT)
 			+ game->fps.plane.y * cos(-ROT_WEIGHT);
+		game->fps.angle = game->fps.angle + \
+			(ROT_WEIGHT * 180 / M_PI);
 	}
 	if (!game->key.left && game->key.right)
 	{
@@ -109,6 +111,8 @@ void	rotation_movement(t_game *game)
 			- game->fps.plane.y * sin(ROT_WEIGHT);
 		game->fps.plane.y = game->fps.old_plane_x * sin(ROT_WEIGHT)
 			+ game->fps.plane.y * cos(ROT_WEIGHT);
+		game->fps.angle = game->fps.angle + \
+			-1 * (ROT_WEIGHT * 180 / M_PI);
 	}
 }
 

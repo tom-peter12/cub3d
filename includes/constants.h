@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:23:43 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 18:03:40 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/26 17:46:36 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # define MOVE_WEIGHT 0.07
 # define ROT_WEIGHT 0.04
-# define MINIMAP_SCALE 16
+# define MINIMAP_SCALE 32
+# define MINIMAP_CENTER 100
 
 # if __APPLE__
 #  define WIN_WIDTH  1920

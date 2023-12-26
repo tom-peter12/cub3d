@@ -6,7 +6,7 @@
 #    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2023/12/23 16:43:39 by tpetros          ###   ########.fr        #
+#    Updated: 2023/12/26 12:22:23 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_RAYCAST = dda_algo \
 				r3nd3r \
 				raycasting \
 				utils \
+				minimap_bonus \
 
 SRC 		= $(addprefix $(SRC_PATH)parsing/, $(addsuffix .c, $(SRC_PARSE))) \
 			  $(addprefix $(SRC_PATH)raycasting/, $(addsuffix .c, $(SRC_RAYCAST))) \
@@ -44,7 +45,7 @@ OBJS      	= $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)/%.o, $(SRC))
 FSANITIZE 	= -g3 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
 	
 CC        	= cc
-CFLAGS    	= -Wall -Wextra -Werror -g 
+CFLAGS    	= -Wall -Wextra -Werror -g
 RM        	= rm -rf
 MacLinker 	= -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink 	= -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz

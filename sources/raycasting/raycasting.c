@@ -55,46 +55,7 @@ void	raycast(t_game *game, int i)
 	calculate_draw_start_end(game);
 }
 
-void	draw_square(t_game *game, int x, int y, int color)
-{
-	int		i;
-	int		j;
 
-	i = 0;
-	while (i < MINIMAP_SCALE)
-	{
-		j = 0;
-		while (j < MINIMAP_SCALE)
-		{
-			game->cmlx.addr[(y + j) * WIN_WIDTH + (x + i)] = color;
-			j++;
-		}
-		i++;
-	}
-}
-
-void	minimap2d(t_game *game)
-{
-	int		i;
-	int		j;
-	char	*tmp;
-
-	i = 0;
-	while (i < (int)game->parse.map->height)
-	{
-		j = 0;
-		while (j < (int)game->parse.map->width)
-		{
-			tmp = ft_strchr("NSEW", game->parse.map->tab[i][j]);
-			if (game->parse.map->tab[i][j] == '0' || (tmp && tmp[0]))
-				draw_square(game, j * MINIMAP_SCALE, i * MINIMAP_SCALE, 0);
-			j++;
-		}
-		i++;
-	}
-	draw_square(game, (int)game->fps.pos.y * MINIMAP_SCALE, \
-		(int)game->fps.pos.x * MINIMAP_SCALE, 0xFFFFFF);
-}
 
 int	kaboom(void *param)
 {
