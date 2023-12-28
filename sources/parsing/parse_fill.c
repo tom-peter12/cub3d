@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/23 06:53:59 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 16:58:47 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,38 +54,37 @@ static int	ft_fill_attributes_util(t_parse *parse, char **tmp, char *strpd)
 int	ft_fill_attributes(t_parse *parse)
 {
 	static int	i;
-	char		**tmp;
-	char		*strpd;
-	char		*trimmed_p_line;
+	t_trims		trims;
 	static int	map_line = 1;
 
-	trimmed_p_line = ft_strrtrim(parse->line, " \n");
-	if ((!trimmed_p_line || trimmed_p_line[0] == '\0'))
+	trims.trimmed_p_line = ft_strrtrim(parse->line, " \n");
+	if ((!trims.trimmed_p_line || trims.trimmed_p_line[0] == '\0'))
 	{
 		if (i == 1 && map_line < parse->map_height)
 			return (ft_putendl_fd(EMPTY_LINE_IN_MAP, 2), 1);
-		return (map_line++, 0);
+		return (0);
 	}
-	tmp = ft_msplit(trimmed_p_line, " ");
-	strpd = ft_strtrim(tmp[0], " \n");
-	if (i == 0 && (ft_strchr(tmp[0], '1') || \
-		ft_strchr(tmp[0], '0')) && is_defo_map_line(strpd))
+	trims.tmp = ft_msplit(trims.trimmed_p_line, " ");
+	trims.strpd = ft_strtrim(trims.tmp[0], " \n");
+	if (i == 0 && (ft_strchr(trims.tmp[0], '1') || \
+		ft_strchr(trims.tmp[0], '0')) && is_defo_map_line(trims.strpd))
 		i = 1;
 	if (i == 0)
 	{
-		if (ft_fill_attributes_util(parse, tmp, strpd))
-			return (free(trimmed_p_line), 1);
-		ft_double_array_free(tmp);
+		if (ft_fill_attributes_util(parse, trims.tmp, trims.strpd))
+			return (free(trims.trimmed_p_line), 1);
+		ft_double_array_free(trims.tmp);
 	}
 	else
-		ft_fill_map_parser(parse, tmp);
-	return (map_line++, free(trimmed_p_line), free(strpd), 0);
+		ft_fill_map_parser(parse, trims.tmp, &map_line);
+	return (free(trims.trimmed_p_line), free(trims.strpd), 0);
 }
 
 void	ft_map_dimension(t_parse *parse)
 {
-	int		start_counting;
-	int		len;
+	int				start_counting;
+	static int		null_end = 0;
+	int				len;
 
 	start_counting = 0;
 	len = 0;
@@ -96,6 +95,10 @@ void	ft_map_dimension(t_parse *parse)
 			parse->map_width = len;
 		if (start_counting || is_defo_map_line(parse->line))
 		{
+			if (!is_defo_map_line(parse->line))
+				null_end++;
+			else
+				null_end = 0;
 			if (!start_counting)
 				start_counting = 1;
 			parse->map_height++;
@@ -103,10 +106,13 @@ void	ft_map_dimension(t_parse *parse)
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
 	}
+	parse->map_height -= null_end;
 }
 
 int	ft_fill_parser(t_parse *parse)
 {
+	static int	flag = 0;
+
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
@@ -122,7 +128,7 @@ int	ft_fill_parser(t_parse *parse)
 	parse->line = get_next_line(parse->map_fd);
 	while (parse->line)
 	{
-		if (ft_fill_attributes(parse))
+		if (flag && ft_fill_attributes(parse))
 			return (1);
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);

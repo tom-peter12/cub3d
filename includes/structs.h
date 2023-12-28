@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:24:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 18:20:33 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/28 16:55:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_color
 	int			g;
 	int			b;
 }			t_color;
+
+typedef struct s_trims
+{
+	char		**tmp;
+	char		*strpd;
+	char		*trimmed_p_line;
+}	t_trims;
 
 typedef struct s_map
 {

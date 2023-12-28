@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 18:26:35 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/28 16:45:10 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_and_save_path(t_parse *parse, char **str, int index);
 int		ft_fill_parser(t_parse *parse);
 
 // parse_fill_2.c
-void	ft_fill_map_parser(t_parse *parse, char **tmp_to_free);
+void	ft_fill_map_parser(t_parse *parse, char **tmp_to_free, int *mapline);
 int		is_defo_map_line(char *str);
 int		ft_comma_check(char *str);
 int		color_fill(t_parse *parse, char **color, char *c_f);
