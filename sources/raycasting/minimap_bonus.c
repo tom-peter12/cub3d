@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:29:28 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 19:40:21 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:03:54 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_init_entity(t_entity *info, bool is_player)
 {
 	if (is_player)
 	{
-		info->max_iter = 2;
+		info->max_iter = 4;
 		info->angle_offset = 180;
 		info->clr = 0xFF0000;
 	}

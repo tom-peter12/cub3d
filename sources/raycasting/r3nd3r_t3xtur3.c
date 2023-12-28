@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:50:03 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 15:14:07 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:31:48 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	texture_rendering(t_game *game, int i)
 	color = 0;
 	tex_side(game);
 	texture_mapping(game);
-	step = 1.0 * game->tex_dim.y / game->ray.dda.line_height;
+	step = game->tex_dim.y / game->ray.dda.line_height;
 	texpos = (game->ray.dda.draw_start - WIN_HEIGHT / 2 + \
 		game->ray.dda.line_height / 2) * step;
 	y = game->ray.dda.draw_start;
