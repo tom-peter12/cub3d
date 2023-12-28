@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 18:42:29 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:52:13 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int		close_window(t_game *game);
 
 // r3nd3r_t3xtur3.c
 void	texture_rendering(t_game *game, int i);
-void	texture_mapping(t_game *game);
+void	pre_texture_mapping(t_game *game);
 void	texture_addr(t_game *game);
 void	tex_which_side(t_game *game);
 
