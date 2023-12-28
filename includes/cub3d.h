@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:33:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 16:45:10 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:42:29 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int		ft_validate_parsed(t_parse *parse);
 // parse_fill.c
 void	ft_map_dimension(t_parse *parse);
 int		ft_fill_attributes(t_parse *parse);
-void	ft_texture_filler(t_parse *parse, char **tmp, char *strpd);
-void	check_and_save_path(t_parse *parse, char **str, int index);
+void	ft_texture_filler(t_parse *parse, t_trims *trims);
+void	check_and_save_path(t_parse *parse, t_trims *trims, int index);
 int		ft_fill_parser(t_parse *parse);
 
 // parse_fill_2.c

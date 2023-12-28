@@ -3,51 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 16:58:47 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:48:16 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_texture_filler(t_parse *parse, char **tmp, char *strpd)
+void	ft_texture_filler(t_parse *parse, t_trims *trims)
 {
-	if (ft_double_array_len(tmp) != 2)
+	if (ft_double_array_len(trims->tmp) != 2)
 	{
-		if (ft_double_array_len(tmp) < 2)
+		if (ft_double_array_len(trims->tmp) < 2)
 			ft_putendl_fd(MISSING_TEXTURE_PATH, 2);
-		else if (ft_double_array_len(tmp) > 2)
+		else if (ft_double_array_len(trims->tmp) > 2)
 			ft_putendl_fd(EXTRA_TOKEN_FOR_PATH, 2);
-		ft_double_array_free(tmp);
-		free(strpd);
+		ft_double_array_free(trims->tmp);
+		free(trims->strpd);
 		exit_return_freer(parse, 1);
 	}
-	(void)strpd;
-	if (ft_strcmp(tmp[0], "NO") == 0)
-		check_and_save_path(parse, tmp, NO);
-	else if (ft_strcmp(tmp[0], "SO") == 0)
-		check_and_save_path(parse, tmp, SO);
-	else if (ft_strcmp(tmp[0], "WE") == 0)
-		check_and_save_path(parse, tmp, WE);
-	else if (ft_strcmp(tmp[0], "EA") == 0)
-		check_and_save_path(parse, tmp, EA);
+	if (ft_strcmp(trims->tmp[0], "NO") == 0)
+		check_and_save_path(parse, trims, NO);
+	else if (ft_strcmp(trims->tmp[0], "SO") == 0)
+		check_and_save_path(parse, trims, SO);
+	else if (ft_strcmp(trims->tmp[0], "WE") == 0)
+		check_and_save_path(parse, trims, WE);
+	else if (ft_strcmp(trims->tmp[0], "EA") == 0)
+		check_and_save_path(parse, trims, EA);
 }
 
-static int	ft_fill_attributes_util(t_parse *parse, char **tmp, char *strpd)
+static int	ft_fill_attributes_util(t_parse *parse, t_trims *trims)
 {
-	if (ft_strcmp(strpd, "NO") == 0 || ft_strcmp(strpd, "SO") == 0 \
-		|| ft_strcmp(strpd, "WE") == 0 || ft_strcmp(strpd, "EA") == 0)
-		ft_texture_filler(parse, tmp, strpd);
-	else if (ft_strcmp(strpd, "C") == 0 || ft_strcmp(strpd, "F") == 0)
+	if (ft_strcmp(trims->strpd, "NO") == 0 || ft_strcmp(trims->strpd, "SO") == 0 \
+		|| ft_strcmp(trims->strpd, "WE") == 0 || ft_strcmp(trims->strpd, "EA") == 0)
+		ft_texture_filler(parse, trims);
+	else if (ft_strcmp(trims->strpd, "C") == 0 || ft_strcmp(trims->strpd, "F") == 0)
 	{
-		if (ft_ceiling_floor(parse, strpd))
-			return (free(strpd), ft_double_array_free(tmp), 1);
+		if (ft_ceiling_floor(parse, trims->strpd))
+			return (free(trims->strpd), ft_double_array_free(trims->tmp), 1);
 	}
-	else if (strpd[0] != ' ' && strpd[0] != '\n' && strpd[0] != '\0')
-		return (free(strpd), ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), \
-			ft_double_array_free(tmp), 1);
+	else if (trims->strpd[0] != ' ' && trims->strpd[0] != '\n' && trims->strpd[0] != '\0')
+		return (free(trims->strpd), ft_putendl_fd(UNKNOWN_IDENTIFIER, 2), \
+			ft_double_array_free(trims->tmp), 1);
 	return (0);
 }
 
@@ -71,7 +70,7 @@ int	ft_fill_attributes(t_parse *parse)
 		i = 1;
 	if (i == 0)
 	{
-		if (ft_fill_attributes_util(parse, trims.tmp, trims.strpd))
+		if (ft_fill_attributes_util(parse, &trims))
 			return (free(trims.trimmed_p_line), 1);
 		ft_double_array_free(trims.tmp);
 	}
@@ -111,8 +110,6 @@ void	ft_map_dimension(t_parse *parse)
 
 int	ft_fill_parser(t_parse *parse)
 {
-	static int	flag = 0;
-
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
@@ -128,7 +125,7 @@ int	ft_fill_parser(t_parse *parse)
 	parse->line = get_next_line(parse->map_fd);
 	while (parse->line)
 	{
-		if (flag && ft_fill_attributes(parse))
+		if (ft_fill_attributes(parse))
 			return (1);
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
