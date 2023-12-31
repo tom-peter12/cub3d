@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 21:32:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/31 22:30:07 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,23 @@ int	ft_validate_parsed(t_parse *parse)
 	if (ft_valid_ceiling_floor(parse))
 		return (1);
 	return (0);
+}
+
+void	fill_arr_file(char *map_file, t_parse *parse)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	fd = open(map_file, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		parse->arr_file[i] = ft_strdup(line);
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
+	close(fd);
 }

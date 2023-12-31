@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:48 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/26 18:28:31 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/31 22:34:38 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 
 	ft_memset(&game, 0, sizeof(t_game));
 	parser(&game.parse, argc, argv);
+	printf("parse done\n");
 	init_game(&game);
 	mlx_hook(game.cmlx.mlx_win, 6, 1L << 6, follow_mouse, &game);
 	mlx_hook(game.cmlx.mlx_win, 2, 1L << 0, key_press, &game);

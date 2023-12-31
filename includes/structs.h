@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:24:59 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 16:55:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/31 21:55:06 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_parse
 	int			map_height;
 	int			map_width;
 	t_map		*map;
+	char		**arr_file;
+	int 		file_len;
 }			t_parse;
 
 typedef struct s_vector2

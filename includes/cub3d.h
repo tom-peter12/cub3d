@@ -71,6 +71,8 @@ int		ft_init_valid_map(t_parse *parse, t_map *map, int len);
 int		ft_texture_files(t_parse *parse);
 
 char	*ft_strrtrim(char const *s1, char const *set);
+
+void	fill_arr_file(char *map_file, t_parse *parse);
 /**
  * Ray casting files
  * 

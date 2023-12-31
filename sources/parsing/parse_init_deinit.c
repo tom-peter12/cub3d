@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_init_deinit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 18:55:15 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/31 21:56:33 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_init_parse(t_parse *parse)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
 	if (ft_init_ceiling_floor(parse))
 		return (1);
+	parse->arr_file = NULL;
+	parse->file_len = 1;
 	return (0);
 }
 

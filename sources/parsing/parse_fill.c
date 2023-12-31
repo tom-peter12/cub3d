@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:39:18 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 18:48:16 by tpetros          ###   ########.fr       */
+/*   Updated: 2023/12/31 22:38:37 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,12 @@ void	ft_map_dimension(t_parse *parse)
 {
 	int				start_counting;
 	static int		null_end = 0;
-	int				len;
 
 	start_counting = 0;
-	len = 0;
 	while (parse->line)
 	{
-		len = ft_strlen(parse->line) - 1;
-		if (len > parse->map_width)
-			parse->map_width = len;
+		if (((int)ft_strlen(parse->line) - 1) > parse->map_width)
+			parse->map_width = ((int)ft_strlen(parse->line) - 1);
 		if (start_counting || is_defo_map_line(parse->line))
 		{
 			if (!is_defo_map_line(parse->line))
@@ -104,12 +101,16 @@ void	ft_map_dimension(t_parse *parse)
 		}
 		free(parse->line);
 		parse->line = get_next_line(parse->map_fd);
+		parse->file_len++;
 	}
 	parse->map_height -= null_end;
 }
 
 int	ft_fill_parser(t_parse *parse)
 {
+	int	i;
+
+	i = 0;
 	parse->map_fd = open(parse->map_file, O_RDONLY);
 	parse->line = get_next_line(parse->map_fd);
 	if (!parse->line)
@@ -121,15 +122,15 @@ int	ft_fill_parser(t_parse *parse)
 	parse->map_tmp = ft_calloc(sizeof(char *), (parse->map_height + 1));
 	if (parse->map_tmp == NULL)
 		return (ft_putendl_fd(MALLOC_FAIL, 2), 1);
-	parse->map_fd = open(parse->map_file, O_RDONLY);
-	parse->line = get_next_line(parse->map_fd);
-	while (parse->line)
+	parse->arr_file = ft_calloc(sizeof(char *), (parse->file_len + 1));
+	fill_arr_file(parse->map_file, parse);
+	while (parse->arr_file[i] && i < parse->file_len)
 	{
+		parse->line = parse->arr_file[i];
 		if (ft_fill_attributes(parse))
 			return (1);
-		free(parse->line);
-		parse->line = get_next_line(parse->map_fd);
+		i++;
 	}
-	close(parse->map_fd);
+	// ft_double_array_free(parse->arr_file); /// TODO: check if this is needed
 	return (0);
 }
