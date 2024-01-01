@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:01:46 by tpetros           #+#    #+#             */
-/*   Updated: 2024/01/01 13:26:52 by tpetros          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:49:13 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*ft_strjoinn(char *s1, char const *s2, size_t len)
 		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = len;
-	join = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	join = (char *)ft_calloc((s1_len + s2_len + 1), sizeof(char));
 	if (!join)
 		return (NULL);
 	ft_strlcpyy(join, s1, s1_len + 1);
@@ -68,18 +68,22 @@ char	*get_next_line(int fd)
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
 	char		*newline;
-	int			countread;
+	int			countread = -1;
 	int			to_copy;
 
 	line = ft_strdupp(buf);
-	while (!(ft_strchr(line, '\n')) && (countread = read(fd, buf, BUFFER_SIZE)) > 0)
+	countread = read(fd, buf, BUFFER_SIZE);
+	if (countread == -1) {
+    	return NULL;
+}
+	while (!(ft_strchr(line, '\n')) && (countread > 0))
 	{
 		buf[countread] = '\0';
 		line = ft_strjoinn(line, buf, countread);
+		countread = read(fd, buf, BUFFER_SIZE);
 	}
 	if (ft_strlen(line) == 0)
 		return (free(line), NULL);
-
 	newline = ft_strchr(line, '\n');
 	if (newline != NULL)
 	{
@@ -94,3 +98,97 @@ char	*get_next_line(int fd)
 	line[to_copy] = '\0';
 	return (line);
 }
+
+// void	init_gnl(t_gnl *gnl)
+// {
+// 	gnl->line = NULL;
+// 	gnl->newline = NULL;
+// 	gnl->countread = -1;
+// 	gnl->to_copy = 0;
+// }
+
+// char	*get_next_line(int fd)
+// {
+// 	static char	buf[BUFFER_SIZE + 1];
+// 	t_gnl		gnl;
+
+// 	ft_memset(&gnl, 0, sizeof(t_gnl));
+// 	gnl.line = ft_strdupp(buf);
+// 	gnl.countread = read(fd, buf, BUFFER_SIZE);
+// 	while (!(ft_strchr(gnl.line, '\n')) && (gnl.countread  > 0))
+// 	{
+// 		buf[gnl.countread] = '\0';
+// 		gnl.line = ft_strjoinn(gnl.line, buf, gnl.countread);
+// 		gnl.countread = read(fd, buf, BUFFER_SIZE);
+// 	}
+// 	if (ft_strlen(gnl.line) == 0)
+// 		return (free(gnl.line), NULL);
+// 	gnl.newline = ft_strchr(gnl.line, '\n');
+// 	if (gnl.newline != NULL)
+// 	{
+// 		gnl.to_copy = gnl.newline - gnl.line + 1;
+// 		ft_strlcpyy(buf, gnl.newline + 1, BUFFER_SIZE + 1);
+// 	}
+// 	else
+// 	{
+// 		gnl.to_copy = ft_strlen(gnl.line);
+// 		ft_strlcpyy(buf, "", BUFFER_SIZE + 1);
+// 	}
+// 	gnl.line[gnl.to_copy] = '\0';
+// 	return (gnl.line);
+// }
+
+
+int main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("/Users/hatesfam/Desktop/my_42work/cub3d/assets/maps/ai.cub", O_RDONLY);
+		line = get_next_line(fd);
+	while (line)
+	{
+		printf("[%s]\n", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+}
+// void	ft_strlcpyy_utils(char *buf, char **line, char **newline)
+// {
+// 	int			to_copy;
+
+// 	to_copy = 0;
+// 	if ((*newline) != NULL)
+// 	{
+// 		to_copy = (*newline) - (*line) + 1;
+// 		ft_strlcpyy((buf), (*newline) + 1, BUFFER_SIZE + 1);
+// 	}
+// 	else
+// 	{
+// 		to_copy = ft_strlen((*line));
+// 		ft_strlcpyy((buf), "", BUFFER_SIZE + 1);
+// 	}
+// 	(*line)[to_copy] = '\0';
+// }
+
+// char	*get_next_line(int fd)
+// {
+// 	static char	buf[BUFFER_SIZE + 1];
+// 	char		*line;
+// 	char		*newline;
+// 	int			countread;
+
+// 	line = ft_strdupp(buf);
+// 	countread = read(fd, buf, BUFFER_SIZE);
+// 	while (!(ft_strchr(line, '\n')) && (countread > 0))
+// 	{
+// 		buf[countread] = '\0';
+// 		line = ft_strjoinn(line, buf, countread);
+// 		countread = read(fd, buf, BUFFER_SIZE);
+// 	}
+// 	if (ft_strlen(line) == 0)
+// 		return (free(line), NULL);
+// 	newline = ft_strchr(line, '\n');
+// 	ft_strlcpyy_utils(buf, &line, &newline);
+// 	return (line);
+// }

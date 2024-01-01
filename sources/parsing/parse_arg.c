@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:37:35 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 18:39:57 by tpetros          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:01:03 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ char	*ft_strrtrim(char const *s1, char const *set)
 	return (ft_substr(s1, left, right - left + 1));
 }
 
-void	check_and_save_path(t_parse *parse, t_trims *trims, int index)
+void	check_and_save_path_util(t_parse *parse, \
+	t_trims *trims, int index, char *stripped)
 {
-	char	*stripped;
-
-	stripped = ft_strtrim(trims->tmp[1], " \n");
 	if (parse->textures[index])
 	{
 		ft_putendl_fd(DUPLICATE_ATTR, 2);
@@ -73,6 +71,14 @@ void	check_and_save_path(t_parse *parse, t_trims *trims, int index)
 		free(trims->strpd);
 		exit_return_freer(parse, 1);
 	}
+}
+
+void	check_and_save_path(t_parse *parse, t_trims *trims, int index)
+{
+	char	*stripped;
+
+	stripped = ft_strtrim(trims->tmp[1], " \n");
+	check_and_save_path_util(parse, trims, index, stripped);
 	if (ft_strcmp(trims->tmp[0], "NO") == 0)
 		parse->textures[NO] = ft_strdup(stripped);
 	else if (ft_strcmp(trims->tmp[0], "SO") == 0)

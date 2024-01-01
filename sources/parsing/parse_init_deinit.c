@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_init_deinit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2024/01/01 13:54:24 by tpetros          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:05:25 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_init_parse(t_parse *parse)
 	return (0);
 }
 
-void	exit_return_freer(t_parse *parse, int flag)
+void	free_texture(t_parse *parse)
 {
 	if (parse->textures[NO])
 		free(parse->textures[NO]);
@@ -62,6 +62,11 @@ void	exit_return_freer(t_parse *parse, int flag)
 		free(parse->textures[WE]);
 	if (parse->textures)
 		free(parse->textures);
+}
+
+void	exit_return_freer(t_parse *parse, int flag)
+{
+	free_texture(parse);
 	if (parse->map_tmp)
 		ft_double_array_free(parse->map_tmp);
 	if (parse->dup_check)
