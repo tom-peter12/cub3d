@@ -6,7 +6,7 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:33:51 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 18:55:15 by tpetros          ###   ########.fr       */
+/*   Updated: 2024/01/01 13:54:24 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,16 @@ int	ft_init_parse(t_parse *parse)
 
 void	exit_return_freer(t_parse *parse, int flag)
 {
+	if (parse->textures[NO])
+		free(parse->textures[NO]);
+	if (parse->textures[SO])
+		free(parse->textures[SO]);
+	if (parse->textures[EA])
+		free(parse->textures[EA]);
+	if (parse->textures[WE])
+		free(parse->textures[WE]);
 	if (parse->textures)
-		ft_double_array_free(parse->textures);
+		free(parse->textures);
 	if (parse->map_tmp)
 		ft_double_array_free(parse->map_tmp);
 	if (parse->dup_check)

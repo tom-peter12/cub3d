@@ -6,100 +6,91 @@
 /*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:01:46 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/28 19:07:26 by tpetros          ###   ########.fr       */
+/*   Updated: 2024/01/01 13:26:52 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_all_read(int fd, char *left_stat)
+static size_t	ft_strlcpyy(char *dst, const char *src, size_t dstsize)
 {
-	char	*buff_read;
-	int		read_bytes;
+	size_t	srcsize;
+	size_t	i;
 
-	read_bytes = 1;
-	buff_read = (char *)ft_calloc((sizeof(char) * (size_t)BUFFER_SIZE + 2), 1);
-	if (!buff_read)
-		return (NULL);
-	while (!ft_strchr(buff_read, '\n') && read_bytes != 0)
+	srcsize = ft_strlen(src);
+	i = 0;
+	if (dstsize > 0)
 	{
-		read_bytes = read(fd, buff_read, BUFFER_SIZE);
-		if (read_bytes == 0)
-			break ;
-		if (read_bytes <= -1)
+		while (i < srcsize && i < dstsize - 1)
 		{
-			free(buff_read);
-			return (NULL);
+			dst[i] = src[i];
+			i++;
 		}
-		buff_read[read_bytes] = '\0';
-		left_stat = ft_strjoin(left_stat, buff_read);
+		dst[i] = '\0';
 	}
-	free(buff_read);
-	return (left_stat);
+	return (srcsize);
 }
 
-char	*ft_stripped_line(char *stat_chars)
+static char	*ft_strdupp(const char *src)
 {
-	char	*line_stripped;
-	size_t	i;
+	char	*dst;
+	size_t	len;
 
-	i = 0;
-	if (!stat_chars[i])
+	len = ft_strlen(src) + 1;
+	dst = malloc(len);
+	if (dst == NULL)
 		return (NULL);
-	while (stat_chars[i] && stat_chars[i] != '\n')
-		i++;
-	if (stat_chars[i++] == '\n')
-		i++;
-	line_stripped = (char *) malloc(sizeof(char) * (i + 1));
-	if (!line_stripped)
-		return (NULL);
-	i = -1;
-	while (stat_chars[++i] && stat_chars[i] != '\n')
-		line_stripped[i] = stat_chars[i];
-	if (stat_chars[i] == '\n')
-		line_stripped[i++] = '\n';
-	line_stripped[i] = '\0';
-	return (line_stripped);
+	ft_strlcpyy(dst, src, len);
+	return (dst);
 }
 
-char	*ft_left_chars(char *extraline)
+static char	*ft_strjoinn(char *s1, char const *s2, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*the_rest;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*join;
 
-	i = 0;
-	j = 0;
-	while (extraline[i] && extraline[i] != '\n')
-		i++;
-	if (extraline[i] == '\0')
-	{
-		free(extraline);
+	if (!s1 || !s2)
 		return (NULL);
-	}
-	if (extraline[i] == '\n')
-		i++;
-	the_rest = (char *) malloc(sizeof(char) * (ft_strlen(extraline + i) + 1));
-	if (!the_rest)
+	s1_len = ft_strlen(s1);
+	s2_len = len;
+	join = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!join)
 		return (NULL);
-	while (extraline[i])
-		the_rest[j++] = extraline[i++];
-	the_rest[j] = '\0';
-	free(extraline);
-	return (the_rest);
+	ft_strlcpyy(join, s1, s1_len + 1);
+	ft_strlcpyy((join + s1_len), s2, s2_len + 1);
+	free(s1);
+	return (join);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*next_line;
-	static char	*extra_chars;
+	static char	buf[BUFFER_SIZE + 1];
+	char		*line;
+	char		*newline;
+	int			countread;
+	int			to_copy;
 
-	if (fd < 0 || BUFFER_SIZE > INT_MAX || BUFFER_SIZE <= 0)
-		return (NULL);
-	extra_chars = ft_all_read(fd, extra_chars);
-	if (!extra_chars)
-		return (NULL);
-	next_line = ft_stripped_line(extra_chars);
-	extra_chars = ft_left_chars(extra_chars);
-	return (next_line);
+	line = ft_strdupp(buf);
+	while (!(ft_strchr(line, '\n')) && (countread = read(fd, buf, BUFFER_SIZE)) > 0)
+	{
+		buf[countread] = '\0';
+		line = ft_strjoinn(line, buf, countread);
+	}
+	if (ft_strlen(line) == 0)
+		return (free(line), NULL);
+
+	newline = ft_strchr(line, '\n');
+	if (newline != NULL)
+	{
+		to_copy = newline - line + 1;
+		ft_strlcpyy(buf, newline + 1, BUFFER_SIZE + 1);
+	}
+	else
+	{
+		to_copy = ft_strlen(line);
+		ft_strlcpyy(buf, "", BUFFER_SIZE + 1);
+	}
+	line[to_copy] = '\0';
+	return (line);
 }

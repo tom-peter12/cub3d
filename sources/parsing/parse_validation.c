@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:23 by tpetros           #+#    #+#             */
-/*   Updated: 2023/12/22 21:32:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/01 13:42:20 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	empty_texture_field(t_parse *parse)
 	while (i < 4)
 	{
 		if (!parse->textures[i])
-			return (printf("tom"), ft_putendl_fd(MISSING_TEXTURE_PATH, 2), 1);
+			return (ft_putendl_fd(MISSING_TEXTURE_PATH, 2), 1);
 		i++;
 	}
 	return (0);
