@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
+#    By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:33:02 by tpetros           #+#    #+#              #
-#    Updated: 2024/01/01 14:52:06 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/01 16:21:24 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJS      	:= $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)/%.o, $(SRC))
 FSANITIZE 	:= -g3 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
 	
 CC        	:= cc
-CFLAGS    	:= -Wall -Wextra -Werror -g
+CFLAGS    	:= -Wall -Wextra -Werror -g $(FSANITIZE)
 RM        	:= rm -rf
 MacLinker 	:= -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 LinuxLink 	:= -Lincludes/mlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz
@@ -95,6 +95,8 @@ fclean: clean
 
 re: fclean all
 
+norm:
+	norminette sources/raycasting sources/parsing sources/main.c includes/libft/ includes/constants.h includes/err.h includes/structs.h includes/cub3d.h
 
 .PHONY: all clean fclean re
 
