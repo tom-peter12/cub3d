@@ -1,6 +1,8 @@
 *.o
 cub3D
+cub3D_b
 objects/
+objects_b/
 *.a
 .vscode/
 .DS_Store

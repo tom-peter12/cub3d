@@ -69,6 +69,7 @@ int	kaboom(void *param)
 		render(game, i);
 		i++;
 	}
+	minimap2d(game);
 	mlx_put_image_to_window(game->cmlx.ptr, game->cmlx.mlx_win,
 		game->cmlx.img, 0, 0);
 	return (0);
