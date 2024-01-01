@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: tpetros <tpetros@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:01:46 by tpetros           #+#    #+#             */
-/*   Updated: 2024/01/01 16:36:46 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/01 18:12:28 by tpetros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 static char	g_buf[BUFFER_SIZE + 1];
 
 static size_t	ft_strlcpyy(char *dst, const char *src, size_t dstsize)

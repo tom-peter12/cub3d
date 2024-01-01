@@ -6,3 +6,4 @@ objects_b/
 *.a
 .vscode/
 .DS_Store
+.gitignore
